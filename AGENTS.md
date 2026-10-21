@@ -2,28 +2,28 @@
 
 这是用户自用的 Obsidian Templater 简体中文汉化源码仓库。直接修改现有
 TypeScript 源码和内置函数说明，不引入 i18n 依赖或多语言框架。
-以下状态记录于 2026-10-07；开始工作时先检查实际 Git 状态。
+以下状态记录于 2026-10-22；开始工作时先检查实际 Git 状态。
 
 ## 当前状态
 
 - 本地维护分支：`zh-cn`，已创建并切换；保留原有 `master` 分支。
 - 官方远程：`origin` → `https://github.com/SilentVoid13/Templater.git`。
   这是官方仓库，不是用户的 fork；不要向它推送汉化修改。
-- 当前插件版本为 `2.25.1`，汉化使用的官方基线提交为
-  `c51cf118fd8ad0c451dc75bc602955b8f5667145`。该提交位于官方 `master`，
-  比 `2.25.1` 发布标签多 12 个提交，不要将两者当作同一个基线。
-- **汉化源码、对应测试和本交接文档目前尚未提交。** `zh-cn` 的 HEAD
-  仍是上述官方基线。创建分支不等于已将汉化保存到提交历史中。
+- 当前插件版本为 `2.26.0`。2026-10-22 已将官方 `2.26.0` 标签（`28c1ff7`）
+  合并进 `zh-cn`。该发布相对旧基线 `c51cf11`（2.25.1+12，功能提交已包含
+  在旧基线中）只改了 CHANGELOG/manifest/package/versions 版本文件，
+  无新增界面文案需要补译。
+- 汉化已保存为独立提交 `a71f79a`，同步合并提交为 `6bd046c`。`zh-cn`
+  分支历史完整，不再是未提交状态。
 - 已汉化：设置页及说明、命令名称、侧栏图标提示、文件菜单、弹窗及按钮、
   安全确认、校验提示、错误及迁移通知、内置函数的自动补全说明和 README。
 - 保留模板语法、函数名、命令 ID、配置键、枚举值、正则表达式及协议格式。
   内置代码示例、用户模板内容、用户脚本说明和原有文件名不自动翻译。
-- 上次验证：`npm run typecheck`、`npm run lint`、`npm run build` 通过。
-  Lint 有 4 条警告；构建有旧版 esbuild 不识别 ES2022 的警告。
-  本地模拟检查通过 47 个中文设置名称/选项和 6 个命令名称，命令 ID 一致；
-  内置说明的函数名、签名和可执行示例保持一致。
-- **WebdriverIO 界面自动化测试未完成，不能记为通过。** 上次运行在下载及
-  准备测试依赖阶段未产生测试结果；真实 Obsidian 界面由用户试用验收。
+- 2026-10-22 验证：`npm run typecheck`、`npm run lint`、`npm run build`
+  通过（Lint 仍为 4 条警告；构建仍有旧版 esbuild 警告；构建脚本通过
+  Obsidian CLI 成功重载插件）。manifest 冲突按“新版本号 + 中文描述”解决。
+- **WebdriverIO 界面自动化测试仍未运行，不能记为通过。** 真实 Obsidian
+  界面由用户试用验收。
 
 ## 汉化维护位置与约束
 
@@ -80,16 +80,19 @@ TypeScript 源码和内置函数说明，不引入 i18n 依赖或多语言框架
 
 ## 本地试用安装
 
-- 用户指定仓库：`/home/nldff/文档/obsidian/Personal OSV2`。
-- 插件目录：该仓库的 `.obsidian/plugins/templater-obsidian/`。
-- 已复制并逐文件校验 `main.js`、`manifest.json`、`styles.css`。
-  插件 ID 已加入该仓库 `.obsidian/community-plugins.json` 的启用列表，
-  原列表备份为 `.obsidian/community-plugins.json.before-templater`。
-  未自动开启模板执行的高风险设置。
-- 当前安装包：项目根目录的 `Templater-2.25.1-zh-CN.zip`。
+- 用户仓库（2026-10-22 实测，已由 `Personal OSV2` 改名）：
+  `/home/nldff/文档/obsidian/Personal OS`。
+- 插件目录：该仓库的 `.obsidian/plugins/obsidian-Templater/`
+  （注意目录名与插件 ID `templater-obsidian` 不同）。
+- 2026-10-22 已安装 2.26.0 汉化构建并逐文件校验 `main.js`、
+  `manifest.json`、`styles.css`；覆盖前旧文件已备份到
+  `.obsidian/plugin-backups/obsidian-Templater-<时间戳>/`。
+  未改动 `data.json` 与设备本地设置。
+- 当前安装包：项目根目录的 `Templater-2.26.0-zh-CN.zip`
+  （旧 `Templater-2.25.1-zh-CN.zip` 可删）。
   插件最低 Obsidian 版本为 `1.13.0`；同步上游时以新版 manifest 为准。
 - 用户要求将后续构建安装到该仓库时，仅复制三个发布文件；覆盖前把已有
-  同名文件备份到该仓库的 `.obsidian/plugin-backups/templater-obsidian-时间戳/`。
+  同名文件备份到该仓库的 `.obsidian/plugin-backups/obsidian-Templater-时间戳/`。
   保留 `data.json`、设备本地设置、其他插件配置和笔记，不替换整个插件目录。
 - 复制后校验文件内容，并提示重新加载插件或重启 Obsidian。
   在 Obsidian 内更新官方插件会覆盖本地汉化；后续维护应从 `zh-cn` 源码构建。
