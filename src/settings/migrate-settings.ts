@@ -29,14 +29,14 @@ function migrateV1ToV2(v1: SettingsV1): MigrationResult {
     const affectedSecuritySettings: string[] = [];
 
     if (v1.trigger_on_file_creation === true)
-        affectedSecuritySettings.push("'Trigger on file creation'");
+        affectedSecuritySettings.push("“创建新文件时触发 Templater”");
     if (v1.enable_system_commands === true)
-        affectedSecuritySettings.push("'Enable system commands'");
+        affectedSecuritySettings.push("“启用用户系统命令函数”");
     if (
         Array.isArray(v1.startup_templates) &&
         v1.startup_templates.some((t) => t !== "")
     )
-        affectedSecuritySettings.push("'Enable startup templates'");
+        affectedSecuritySettings.push("“启用启动模板”");
 
     const trigger_on_file_creation_mode: Settings["trigger_on_file_creation_mode"] =
         v1.enable_folder_templates === true

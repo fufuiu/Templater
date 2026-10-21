@@ -68,7 +68,7 @@ export function describe_template_hotkey_commands(
     hotkey: ResolvedTemplateHotkey,
 ): string {
     const commands: string[] = [];
-    if (hotkey.insert_enabled) commands.push("Insert");
-    if (hotkey.create_enabled) commands.push("Create");
-    return commands.length > 0 ? commands.join(", ") : "None";
+    if (hotkey.insert_enabled) commands.push("插入");
+    if (hotkey.create_enabled) commands.push("创建");
+    return commands.length > 0 ? commands.join(", ") : "无";
 }

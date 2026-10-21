@@ -1,36 +1,33 @@
 [tp.app]
 name = "app"
-description = "This module exposes the app instance. Prefer to use this over the global app instance."
+description = "此模块提供 Obsidian 的 app 实例，建议优先使用它，而不是全局 app 实例。"
 
 [tp.user]
 name = "user"
-description = "This module exposes custom made scripts, written by yourself within the script file folder location"
+description = "此模块提供你在用户脚本文件夹中编写的自定义脚本。"
 
 [tp.config]
 name = "config"
-description = """This module exposes Templater's running configuration.
-
-This is mostly useful when writing scripts requiring some context information.
-"""
+description = "此模块提供 Templater 的运行配置，适用于需要读取上下文信息的脚本。"
 
 [tp.config.functions.template_file]
 name = "template_file"
-description = "The `TFile` object representing the template file."
+description = "代表模板文件的 `TFile` 对象。"
 definition = "tp.config.template_file"
 
 [tp.config.functions.target_file]
 name = "target_file"
-description = "The `TFile` object representing the target file where the template will be inserted."
+description = "代表模板将插入的目标文件的 `TFile` 对象。"
 definition = "tp.config.target_file"
 
 [tp.config.functions.run_mode]
 name = "run_mode"
-description = "The `RunMode`, representing the way Templater was launched (Create new from template, Append to active file, ...)."
+description = "表示 Templater 启动方式的 `RunMode`（例如从模板创建新文件、追加到当前文件等）。"
 definition = "tp.config.run_mode"
 
 [tp.config.functions.active_file]
 name = "active_file"
-description = "The active file (if existing) when launching Templater."
+description = "Templater 启动时的活动文件（如果存在）。"
 definition = "tp.config.active_file?"
 
 
@@ -38,28 +35,28 @@ definition = "tp.config.active_file?"
 
 [tp.date]
 name = "date"
-description = "This module contains every internal function related to dates."
+description = "此模块包含所有与日期相关的内置函数。"
 
 [tp.date.functions.now]
 name = "now"
-description = "Retrieves the date."
+description = "获取日期。"
 definition = "tp.date.now(format: string = \"YYYY-MM-DD\", offset?: number | string, reference?: string, reference_format?: string)"
 
 [[tp.date.functions.now.args]]
 name = "format"
-description = """The format for the date. Defaults to `"YYYY-MM-DD"`. Refer to the [Momentjs format reference](https://momentjs.com/docs/#/displaying/format/)."""
+description = "日期格式，默认为 `\"YYYY-MM-DD\"`。请参阅 [Moment.js 格式参考](https://momentjs.com/docs/#/displaying/format/)。"
 
 [[tp.date.functions.now.args]]
 name = "offset"
-description = "Duration to offset the date from. If a number is provided, duration will be added to the date in days. You can also specify the offset as a string using the ISO 8601 format."
+description = "日期的偏移量。传入数字时，以天为单位增减日期；也可以传入 ISO 8601 格式的时长字符串。"
 
 [[tp.date.functions.now.args]]
 name = "reference"
-description = "The date to use instead of today's date, e.g. set this to the note's title."
+description = "用于替代今天的参考日期，例如笔记标题中的日期。"
 
 [[tp.date.functions.now.args]]
 name = "reference_format"
-description = "The format for the reference date. Refer to the [Momentjs format reference](https://momentjs.com/docs/#/displaying/format/)."
+description = "参考日期的格式。请参阅 [Moment.js 格式参考](https://momentjs.com/docs/#/displaying/format/)。"
 
 [[tp.date.functions.now.examples]]
 name = "Date now"
@@ -95,12 +92,12 @@ example = """<% tp.date.now("YYYY-MM-DD", -1, tp.file.title, "YYYY-MM-DD") %>"""
 
 [tp.date.functions.tomorrow]
 name = "tomorrow"
-description = "Retrieves tomorrow's date."
+description = "获取明天的日期。"
 definition = "tp.date.tomorrow(format: string = \"YYYY-MM-DD\")"
 
 [[tp.date.functions.tomorrow.args]]
 name = "format"
-description = """The format for the date. Defaults to `"YYYY-MM-DD"`. Refer to the [Momentjs format reference](https://momentjs.com/docs/#/displaying/format/)."""
+description = "日期格式，默认为 `\"YYYY-MM-DD\"`。请参阅 [Moment.js 格式参考](https://momentjs.com/docs/#/displaying/format/)。"
 
 [[tp.date.functions.tomorrow.examples]]
 name = "Date tomorrow"
@@ -112,12 +109,12 @@ example = """<% tp.date.tomorrow("Do MMMM YYYY") %>"""
 
 [tp.date.functions.yesterday]
 name = "yesterday"
-description = "Retrieves yesterday's date."
+description = "获取昨天的日期。"
 definition = "tp.date.yesterday(format: string = \"YYYY-MM-DD\")"
 
 [[tp.date.functions.yesterday.args]]
 name = "format"
-description = """The format for the date. Defaults to `"YYYY-MM-DD"`. Refer to the [Momentjs format reference](https://momentjs.com/docs/#/displaying/format/)."""
+description = "日期格式，默认为 `\"YYYY-MM-DD\"`。请参阅 [Moment.js 格式参考](https://momentjs.com/docs/#/displaying/format/)。"
 
 [[tp.date.functions.yesterday.examples]]
 name = "Date yesterday"
@@ -134,19 +131,19 @@ definition = "tp.date.weekday(format: string = \"YYYY-MM-DD\", weekday: number, 
 
 [[tp.date.functions.weekday.args]]
 name = "format"
-description = """The format for the date. Defaults to `"YYYY-MM-DD"`. Refer to the [Momentjs format reference](https://momentjs.com/docs/#/displaying/format/)."""
+description = "日期格式，默认为 `\"YYYY-MM-DD\"`。请参阅 [Moment.js 格式参考](https://momentjs.com/docs/#/displaying/format/)。"
 
 [[tp.date.functions.weekday.args]]
 name = "weekday"
-description = "Week day number. If the locale assigns Monday as the first day of the week, `0` will be Monday, `-7` will be last week's day."
+description = "星期的编号。如果当前区域设置以星期一为每周第一天，则 `0` 表示本周星期一，`-7` 表示上周星期一。"
 
 [[tp.date.functions.weekday.args]]
 name = "reference"
-description = "The reference date to use instead of today, e.g. set this to the note's title."
+description = "用于替代今天的参考日期，例如笔记标题中的日期。"
 
 [[tp.date.functions.weekday.args]]
 name = "reference_format"
-description = "The format for the reference date. Refer to the [Momentjs format reference](https://momentjs.com/docs/#/displaying/format/)."
+description = "参考日期的格式。请参阅 [Moment.js 格式参考](https://momentjs.com/docs/#/displaying/format/)。"
 
 [[tp.date.functions.weekday.examples]]
 name = "This week's Monday"
@@ -179,11 +176,11 @@ example = """<% moment(tp.file.title, "YYYY-MM-DD").endOf("month").format("YYYY-
 
 [tp.file]
 name = "file"
-description = "This module contains every internal function related to files."
+description = "此模块包含所有与文件相关的内置函数。"
 
 [tp.file.functions.content]
 name = "content"
-description = "The string contents of the file at the time that Templater was executed. Manipulating this string will *not* update the current file."
+description = "Templater 执行时的文件内容字符串。修改此字符串*不会*更新当前文件。"
 definition = "tp.file.content"
 
 [[tp.file.functions.content.examples]]
@@ -192,24 +189,24 @@ example = "<% tp.file.content %>"
 
 [tp.file.functions.create_new]
 name = "create_new"
-description = "Creates a new file using a specified template or with a specified content."
+description = "使用指定模板或内容创建新文件。"
 definition = "tp.file.create_new(template: TFile | string, filename: string = 'Untitled', open_new: boolean = false, folder?: TFolder | string)"
 
 [[tp.file.functions.create_new.args]]
 name = "template"
-description = "Either the template used for the new file content, or the file content as a string. If it is the template to use, you retrieve it with `tp.file.find_tfile(TEMPLATENAME)`."
+description = "新文件使用的模板，或作为字符串提供的文件内容。可使用 `tp.file.find_tfile(TEMPLATENAME)` 获取模板文件。"
 
 [[tp.file.functions.create_new.args]]
 name = "filename"
-description = "The filename of the new file, defaults to \"Untitled\"."
+description = "新文件的名称，默认为 `\"Untitled\"`。"
 
 [[tp.file.functions.create_new.args]]
 name = "open_new"
-description = "Whether to open or not the newly created file. Warning: if you use this option, since commands are executed asynchronously, the file can be opened first and then other commands are appended to that new file and not the previous file."
+description = "是否打开新创建的文件。注意：命令异步执行，启用此选项可能先打开新文件，随后其他命令会追加到新文件，而不是原文件。"
 
 [[tp.file.functions.create_new.args]]
 name = "folder"
-description = """The folder to put the new file in, defaults to Obsidian's default location. If you want the file to appear in a different folder, specify it with `"PATH/TO/FOLDERNAME"` or `tp.app.vault.getAbstractFileByPath(\"PATH/TO/FOLDERNAME\")`."""
+description = "新文件所在的文件夹，默认为 Obsidian 设置的默认位置。可通过 `\"PATH/TO/FOLDERNAME\"` 或 `tp.app.vault.getAbstractFileByPath(\"PATH/TO/FOLDERNAME\")` 指定其他文件夹。"
 
 [[tp.file.functions.create_new.examples]]
 name = "File creation"
@@ -241,12 +238,12 @@ example = """[[<% (await tp.file.create_new("MyFileContent", "MyFilename")).base
 
 [tp.file.functions.creation_date]
 name = "creation_date"
-description = "Retrieves the current file's creation date."
+description = "获取当前文件的创建日期。"
 definition = "tp.file.creation_date(format: string = \"YYYY-MM-DD HH:mm\")"
 
 [[tp.file.functions.creation_date.args]]
 name = "format"
-description = """The format for the date. Defaults to `"YYYY-MM-DD HH:mm"`. Refer to [format reference](https://momentjs.com/docs/#/displaying/format/)."""
+description = "日期格式，默认为 `\"YYYY-MM-DD HH:mm\"`。请参阅[格式参考](https://momentjs.com/docs/#/displaying/format/)。"
 
 [[tp.file.functions.creation_date.examples]]
 name = "File creation date"
@@ -258,20 +255,12 @@ example = """<% tp.file.creation_date("dddd Do MMMM YYYY HH:mm") %>"""
 
 [tp.file.functions.cursor]
 name = "cursor"
-description = """
-Sets the cursor to this location after the template has been inserted. 
-
-You can navigate between the different cursors using the configured hotkey in Obsidian settings.
-"""
+description = "模板插入后，将光标定位到此处。可使用 Obsidian 设置中配置的快捷键在不同光标位置之间跳转。"
 definition = "tp.file.cursor(order?: number)"
 
 [[tp.file.functions.cursor.args]]
 name = "order"
-description = """
-The order of the different cursors jump, e.g. it will jump from 1 to 2 to 3, and so on.
-If you specify multiple tp.file.cursor with the same order, the editor will switch to multi-cursor.
-The order can be any number, including a decimal one, so you can insert a new jump between two existing ones without renumbering them, e.g. 1.5 jumps after 1 and before 2.
-"""
+description = "光标跳转的顺序，例如从 1 跳到 2，再跳到 3。多个 `tp.file.cursor` 使用相同顺序值时，编辑器会启用多光标。顺序值可以是小数，例如 1.5 位于 1 和 2 之间，方便插入新位置而无需重新编号。"
 
 [[tp.file.functions.cursor.examples]]
 name = "File cursor"
@@ -287,12 +276,12 @@ example = "<% tp.file.cursor(1) %>Content<% tp.file.cursor(1.5) %>Content<% tp.f
 
 [tp.file.functions.cursor_append]
 name = "cursor_append"
-description = "Appends some content after the active cursor in the file."
+description = "在文件的当前光标后追加内容。"
 definition = "tp.file.cursor_append(content: string)"
 
 [[tp.file.functions.cursor_append.args]]
 name = "content"
-description = "The content to append after the active cursor."
+description = "要在当前光标后追加的内容。"
 
 [[tp.file.functions.cursor_append.examples]]
 name = "File cursor append"
@@ -300,12 +289,12 @@ example = """<% tp.file.cursor_append("Some text") %>"""
 
 [tp.file.functions.exists]
 name = "exists"
-description = """Check to see if a file exists by it's file path. The full path to the file, relative to the Vault and containing the extension, must be provided."""
+description = "根据路径检查文件是否存在。必须提供相对于仓库根目录的完整路径，包括扩展名。"
 definition = "tp.file.exists(filepath: string)"
 
 [[tp.file.functions.exists.args]]
 name = "filepath"
-description = "The full file path of the file we want to check existence for."
+description = "要检查是否存在的文件的完整路径。"
 
 [[tp.file.functions.exists.examples]]
 name = "File existence"
@@ -317,12 +306,12 @@ example = """<% await tp.file.exists(tp.file.folder(true) + "/" + tp.file.title 
 
 [tp.file.functions.find_tfile]
 name = "find_tfile"
-description = "Search for a file and returns its `TFile` instance."
+description = "查找文件并返回其 `TFile` 实例。"
 definition = "tp.file.find_tfile(filename: string)"
 
 [[tp.file.functions.find_tfile.args]]
 name = "filename"
-description = "The filename we want to search and resolve as a `TFile`."
+description = "要查找并解析为 `TFile` 的文件名。"
 
 [[tp.file.functions.find_tfile.examples]]
 name = "File find TFile"
@@ -330,12 +319,12 @@ example = """<% tp.file.find_tfile("MyFile").basename %>"""
 
 [tp.file.functions.folder]
 name = "folder"
-description = "Retrieves the file's folder name."
+description = "获取文件所在的文件夹名称。"
 definition = "tp.file.folder(absolute: boolean = false)"
 
 [[tp.file.functions.folder.args]]
 name = "absolute"
-description = "If set to `true`, returns the vault-absolute path of the folder. If `false`, only returns the basename of the folder (the last part). Defaults to `false`."
+description = "设为 `true` 时返回相对于仓库根目录的文件夹路径；设为 `false` 时仅返回文件夹名称（路径的最后一段）。默认为 `false`。"
 
 [[tp.file.functions.folder.examples]]
 name = "File folder (Folder)"
@@ -347,12 +336,12 @@ example = "<% tp.file.folder(true) %>"
 
 [tp.file.functions.include]
 name = "include"
-description = "Includes the file's link content. Templates in the included content will be resolved."
+description = "引用链接指向的文件内容，并解析被引用内容中的模板命令。"
 definition = "tp.file.include(include_link: string | TFile)"
 
 [[tp.file.functions.include.args]]
 name = "include_link"
-description = """The link to the file to include, e.g. `"[[MyFile]]"`, or a TFile object. Also supports sections or blocks inclusions."""
+description = "要引用的文件链接，例如 `\"[[MyFile]]\"`，或一个 TFile 对象。也支持引用标题章节或块。"
 
 [[tp.file.functions.include.examples]]
 name = "File include"
@@ -372,12 +361,12 @@ example = """<% await tp.file.include("[[MyFile#^block1]]") %>"""
 
 [tp.file.functions.last_modified_date]
 name = "last_modified_date"
-description = "Retrieves the file's last modification date."
+description = "获取文件的最后修改日期。"
 definition = "tp.file.last_modified_date(format: string = \"YYYY-MM-DD HH:mm\")"
 
 [[tp.file.functions.last_modified_date.args]]
 name = "format"
-description = """The format for the date. Defaults to `"YYYY-MM-DD HH:mm"`. Refer to [format reference](https://momentjs.com/docs/#/displaying/format/)."""
+description = "日期格式，默认为 `\"YYYY-MM-DD HH:mm\"`。请参阅[格式参考](https://momentjs.com/docs/#/displaying/format/)。"
 
 [[tp.file.functions.last_modified_date.examples]]
 name = "File last modified date"
@@ -389,16 +378,16 @@ example = """<% tp.file.last_modified_date("dddd Do MMMM YYYY HH:mm") %>"""
 
 [tp.file.functions.move]
 name = "move"
-description = "Moves the file to the desired vault location."
+description = "将文件移动到仓库中的指定位置。"
 definition = "tp.file.move(new_path: string, file_to_move?: TFile)"
 
 [[tp.file.functions.move.args]]
 name = "new_path"
-description = "The new vault relative path of the file, without the file extension. Note: the new path needs to include the folder and the filename, e.g. `\"/Notes/MyNote\"`."
+description = "新文件路径，相对于仓库根目录且不含扩展名。路径必须包含文件夹和文件名，例如 `\"/Notes/MyNote\"`。"
 
 [[tp.file.functions.move.args]]
 name = "file_to_move"
-description = "The file to move, defaults to the current file."
+description = "要移动的文件，默认为当前文件。"
 
 [[tp.file.functions.move.examples]]
 name = "File move"
@@ -410,12 +399,12 @@ example = """<%* await tp.file.move("/A/B/NewTitle") %>"""
 
 [tp.file.functions.path]
 name = "path"
-description = "Retrieves the file's absolute path on the system."
+description = "获取文件在系统中的绝对路径。"
 definition = "tp.file.path(relative: boolean = false)"
 
 [[tp.file.functions.path.args]]
 name = "relative"
-description = "If set to `true`, only retrieves the vault's relative path."
+description = "设为 `true` 时仅返回相对于仓库根目录的路径。"
 
 [[tp.file.functions.path.examples]]
 name = "File path"
@@ -427,12 +416,12 @@ example = "<% tp.file.path(true) %>"
 
 [tp.file.functions.rename]
 name = "rename"
-description = "Renames the file (keeps the same file extension)."
+description = "重命名文件，保留原扩展名。"
 definition = "tp.file.rename(new_title: string)"
 
 [[tp.file.functions.rename.args]]
 name = "new_title"
-description = "The new file title."
+description = "新的文件名称。"
 
 [[tp.file.functions.rename.examples]]
 name = "File rename"
@@ -444,7 +433,7 @@ example = """<%* await tp.file.rename(tp.file.title + "2") %>"""
 
 [tp.file.functions.selection]
 name = "selection"
-description = "Retrieves the active file's text selection."
+description = "获取当前文件中选中的文本。"
 definition = "tp.file.selection()"
 
 [[tp.file.functions.selection.examples]]
@@ -453,7 +442,7 @@ example = "<% tp.file.selection() %>"
 
 [tp.file.functions.tags]
 name = "tags"
-description = "Retrieves the file's tags (array of string)."
+description = "获取文件的标签，返回字符串数组。"
 definition = "tp.file.tags"
 
 [[tp.file.functions.tags.examples]]
@@ -463,7 +452,7 @@ example = "<% tp.file.tags %>"
 [tp.file.functions.title]
 name = "title"
 definition = "tp.file.title"
-description = "Retrieves the file's title."
+description = "获取文件的名称。"
 
 [[tp.file.functions.title.examples]]
 name = "File title"
@@ -477,39 +466,37 @@ example = """<% tp.file.title.split(" ")[1] %>"""
 
 [tp.frontmatter]
 name = "frontmatter"
-description = "This modules exposes all the frontmatter variables of a file as variables."
+description = "此模块将文件的 frontmatter 属性作为变量提供。"
 
 
 
 [tp.hooks]
 name = "hooks"
-description = "This module exposes hooks that allow you to execute code when a Templater event occurs."
+description = "此模块提供事件钩子，可在 Templater 事件发生时执行代码。"
 
 [tp.hooks.functions.on_all_templates_executed]
 name = "on_all_templates_executed"
-description = """Hooks into when all actively running templates have finished executing. Most of the time this will be a single template, unless you are using `tp.file.include` or `tp.file.create_new`.
-
-Multiple invokations of this method will have their callback functions run in parallel."""
+description = "注册所有正在运行的模板执行完毕后的回调。通常只有一个模板，除非使用了 `tp.file.include` 或 `tp.file.create_new`。多次调用此方法时，注册的回调函数会并行执行。"
 definition = "tp.hooks.on_all_templates_executed(callback_function: () => any)"
 
 [[tp.hooks.functions.on_all_templates_executed.args]]
 name = "callback_function"
-description = "Callback function that will be executed when all actively running templates have finished executing."
+description = "所有正在运行的模板执行完毕后执行的回调函数。"
 
 
 
 [tp.obsidian]
 name = "obsidian"
-description = "This module exposes all the functions and classes from the Obsidian API."
+description = "此模块提供 Obsidian API 中的所有函数和类。"
 
 
 [tp.system]
 name = "system"
-description = "This module contains system related functions."
+description = "此模块包含与系统相关的函数。"
 
 [tp.system.functions.clipboard]
 name = "clipboard"
-description = "Retrieves the clipboard's content."
+description = "获取剪贴板内容。"
 definition = "tp.system.clipboard()"
 
 [[tp.system.functions.clipboard.examples]]
@@ -518,28 +505,28 @@ example = "<% tp.system.clipboard() %>"
 
 [tp.system.functions.prompt]
 name = "prompt"
-description = "Spawns a prompt modal and returns the user's input."
+description = "打开输入窗口并返回用户输入的内容。"
 definition = "tp.system.prompt(prompt_text?: string, default_value?: string, throw_on_cancel: boolean = false, multiline?: boolean = false, select_default_value?: boolean = false)"
 
 [[tp.system.functions.prompt.args]]
 name = "prompt_text"
-description = "Text placed above the input field."
+description = "显示在输入框上方的文本。"
 
 [[tp.system.functions.prompt.args]]
 name = "default_value"
-description = "A default value for the input field."
+description = "输入框的默认值。"
 
 [[tp.system.functions.prompt.args]]
 name = "throw_on_cancel"
-description = "Throws an error if the prompt is canceled, instead of returning a `null` value."
+description = "取消窗口时抛出错误，而不是返回 `null`。"
 
 [[tp.system.functions.prompt.args]]
 name = "multiline"
-description = "If set to `true`, the input field will be a multiline textarea. Defaults to `false`."
+description = "设为 `true` 时使用多行文本框。默认为 `false`。"
 
 [[tp.system.functions.prompt.args]]
 name = "select_default_value"
-description = "If set to `true`, the default value shown when the modal opens is selected, so typing replaces it. Defaults to `false`."
+description = "设为 `true` 时，窗口打开后会选中默认值，输入时可直接替换。默认为 `false`。"
 
 [[tp.system.functions.prompt.examples]]
 name = "Prompt"
@@ -567,32 +554,32 @@ selected value: <% value %>"""
 
 [tp.system.functions.suggester]
 name = "suggester"
-description = "Spawns a suggester prompt and returns the user's chosen item."
+description = "打开选择窗口并返回用户选择的项。"
 definition = "tp.system.suggester(text_items: string[] | ((item: T) => string), items: T[], throw_on_cancel: boolean = false, placeholder: string = \"\", limit?: number = undefined, default_value?: T = undefined)"
 
 [[tp.system.functions.suggester.args]]
 name = "text_items"
-description = "Array of strings representing the text that will be displayed for each item in the suggester prompt. This can also be a function that maps an item to its text representation."
+description = "每个选项的显示文本组成的字符串数组，也可以是将选项转换为显示文本的函数。"
 
 [[tp.system.functions.suggester.args]]
 name = "items"
-description = "Array containing the values of each item in the correct order."
+description = "按对应顺序排列的各选项实际值组成的数组。"
 
 [[tp.system.functions.suggester.args]]
 name = "throw_on_cancel"
-description = "Throws an error if the prompt is canceled, instead of returning a `null` value."
+description = "取消窗口时抛出错误，而不是返回 `null`。"
 
 [[tp.system.functions.suggester.args]]
 name = "placeholder"
-description = "Placeholder string of the prompt."
+description = "输入框的占位提示文本。"
 
 [[tp.system.functions.suggester.args]]
 name = "limit"
-description = "Limit the number of items rendered at once (useful to improve performance when displaying large lists)."
+description = "限制同时显示的选项数量，可提高大型列表的显示性能。"
 
 [[tp.system.functions.suggester.args]]
 name = "default_value"
-description = "Default value to initialize the suggester with."
+description = "选择窗口的默认选项。"
 
 [[tp.system.functions.suggester.examples]]
 name = "Suggester"
@@ -628,32 +615,32 @@ selected value: <% selectedValue %>"""
 
 [tp.system.functions.multi_suggester]
 name = "multi_suggester"
-description = "Spawns a suggester prompt that supports selecting multiple items and returns the user's chosen items."
+description = "打开支持多选的选择窗口，返回用户选择的项组成的数组。"
 definition = "tp.system.multi_suggester(text_items: string[] | ((item: T) => string), items: T[], throw_on_cancel: boolean = false, title: string = \"\", limit?: number = undefined, default_values?: T[] = undefined)"
 
 [[tp.system.functions.multi_suggester.args]]
 name = "text_items"
-description = "Array of strings representing the text that will be displayed for each item in the suggester prompt. This can also be a function that maps an item to its text representation."
+description = "每个选项的显示文本组成的字符串数组，也可以是将选项转换为显示文本的函数。"
 
 [[tp.system.functions.multi_suggester.args]]
 name = "items"
-description = "Array containing the values of each item in the correct order."
+description = "按对应顺序排列的各选项实际值组成的数组。"
 
 [[tp.system.functions.multi_suggester.args]]
 name = "throw_on_cancel"
-description = "Throws an error if the prompt is canceled, instead of returning a `null` value."
+description = "取消窗口时抛出错误，而不是返回 `null`。"
 
 [[tp.system.functions.multi_suggester.args]]
 name = "title"
-description = "Text placed at the top of the modal."
+description = "显示在窗口顶部的文本。"
 
 [[tp.system.functions.multi_suggester.args]]
 name = "limit"
-description = "Limit the number of items rendered at once (useful to improve performance when displaying large lists)."
+description = "限制同时显示的选项数量，可提高大型列表的显示性能。"
 
 [[tp.system.functions.multi_suggester.args]]
 name = "default_values"
-description = "Default values to initialize the suggester with."
+description = "选择窗口中默认选中的项。"
 
 [[tp.system.functions.multi_suggester.examples]]
 name = "Multi-suggester"
@@ -689,16 +676,16 @@ selected value: <% selectedValue %>"""
 
 [tp.web]
 name = "web"
-description = "This modules contains every internal function related to the web (making web requests)."
+description = "此模块包含所有与网络相关的内置函数（用于发起网络请求）。"
 
 [tp.web.functions.daily_quote]
 name = "daily_quote"
-description = "Retrieves and parses a daily quote as a callout. Without arguments it uses the language configured in Obsidian (via `getLanguage()`), falling back to English. English quotes come from `https://github.com/Zachatoo/quotes-database` and Spanish quotes from `https://github.com/wulflo/frases-inventario`."
+description = "获取每日引言并生成标注块。不传参数时使用 Obsidian 的界面语言（通过 `getLanguage()` 获取）；不支持该语言时回退到英语。英语引言来自 `https://github.com/Zachatoo/quotes-database`，西班牙语引言来自 `https://github.com/wulflo/frases-inventario`。"
 definition = "tp.web.daily_quote(language?: string)"
 
 [[tp.web.functions.daily_quote.args]]
 name = "language"
-description = "Optional language code (e.g. `\"en\"`, `\"es\"`) selecting the quotes database. Defaults to Obsidian's display language, falling back to English when no database is registered for that language."
+description = "可选的语言代码（例如 `\"en\"`、`\"es\"`），用于选择引言数据库。默认使用 Obsidian 的界面语言；没有对应数据库时回退到英语。"
 
 [[tp.web.functions.daily_quote.examples]]
 name = "Daily quote"
@@ -710,20 +697,20 @@ example = """<% await tp.web.daily_quote("es") %>"""
 
 [tp.web.functions.random_picture]
 name = "random_picture"
-description = "Gets a random image from `https://unsplash.com/`."
+description = "从 `https://unsplash.com/` 获取随机图片。"
 definition = "tp.web.random_picture(size?: string, query?: string, include_size?: boolean)"
 
 [[tp.web.functions.random_picture.args]]
 name = "size"
-description = "Image size in the format `<width>x<height>`."
+description = "图片尺寸，格式为 `<width>x<height>`。"
 
 [[tp.web.functions.random_picture.args]]
 name = "query"
-description = "Limits selection to photos matching a search term. Multiple search terms can be passed separated by a comma."
+description = "只选择符合搜索词的图片，多个搜索词使用逗号分隔。"
 
 [[tp.web.functions.random_picture.args]]
 name = "include_size"
-description = "Optional argument to include the specified size in the image link markdown. Defaults to false."
+description = "是否在图片的 Markdown 链接中包含指定尺寸，默认为 false。"
 
 [[tp.web.functions.random_picture.examples]]
 name = "Random picture"
@@ -739,16 +726,16 @@ example = """<% await tp.web.random_picture("200x200", "landscape,water") %>"""
 
 [tp.web.functions.request]
 name = "request"
-description = "Makes a HTTP request to the specified URL. Optionally, you can specify a path to extract specific data from the response."
+description = "向指定 URL 发起 HTTP 请求。可选择指定路径，从响应中提取特定数据。"
 definition = "tp.web.request(url: string, path?: string)"
 
 [[tp.web.functions.request.args]]
 name = "url"
-description = "The URL to which the HTTP request will be made."
+description = "HTTP 请求的目标 URL。"
 
 [[tp.web.functions.request.args]]
 name = "path"
-description = "A path within the response JSON to extract specific data."
+description = "用于从 JSON 响应中提取特定数据的路径。"
 
 [[tp.web.functions.request.examples]]
 name = "Simple request"

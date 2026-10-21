@@ -27,20 +27,20 @@ export class TemplateHotkeyModal extends Modal {
     }
 
     onOpen() {
-        this.setTitle("Template hotkey");
+        this.setTitle("模板快捷键");
         this.modalEl.addClass("templater-template-hotkey-modal");
         const { contentEl } = this;
 
         const templateSetting = new Setting(contentEl)
-            .setName("Template")
-            .setDesc("Enter a template path, e.g. meta/templates/daily.md")
+            .setName("模板")
+            .setDesc("输入模板路径，例如 meta/templates/daily.md")
             .addText((cb) => {
                 new FileSuggest(
                     cb.inputEl,
                     this.plugin,
                     FileSuggestMode.TemplateFiles,
                 );
-                cb.setPlaceholder("Template")
+                cb.setPlaceholder("模板")
                     .setValue(this.template)
                     .onChange((value) => {
                         this.template = value;
@@ -48,9 +48,9 @@ export class TemplateHotkeyModal extends Modal {
             });
 
         const insertSetting = new Setting(contentEl)
-            .setName("Insert command")
+            .setName("插入命令")
             .setDesc(
-                "Adds a command that inserts this template into the active file.",
+                "添加一个将此模板插入当前文件的命令。",
             )
             .addToggle((cb) => {
                 cb.setValue(this.insert_enabled).onChange((value) => {
@@ -59,9 +59,9 @@ export class TemplateHotkeyModal extends Modal {
             });
 
         new Setting(contentEl)
-            .setName("Create command")
+            .setName("创建命令")
             .setDesc(
-                "Adds a command that creates a new note from this template.",
+                "添加一个使用此模板创建新笔记的命令。",
             )
             .addToggle((cb) => {
                 cb.setValue(this.create_enabled).onChange((value) => {
@@ -72,12 +72,12 @@ export class TemplateHotkeyModal extends Modal {
         new Setting(contentEl)
             .addButton((btn) =>
                 btn
-                    .setButtonText("Done")
+                    .setButtonText("完成")
                     .setCta()
                     .onClick(async () => {
                         if (!this.template) {
                             templateSetting.setErrorMessage(
-                                "Template cannot be empty",
+                                "模板不能为空",
                             );
                             return;
                         }
@@ -88,7 +88,7 @@ export class TemplateHotkeyModal extends Modal {
                         }
                         if (!this.insert_enabled && !this.create_enabled) {
                             insertSetting.setErrorMessage(
-                                "At least one command must be enabled",
+                                "至少需要启用一个命令",
                             );
                             return;
                         }
@@ -101,7 +101,7 @@ export class TemplateHotkeyModal extends Modal {
                     }),
             )
             .addButton((btn) =>
-                btn.setButtonText("Cancel").onClick(() => this.close()),
+                btn.setButtonText("取消").onClick(() => this.close()),
             );
     }
 

@@ -29,9 +29,9 @@ export class FileSuggest extends AbstractInputSuggest<TFile> {
     get_error_msg(mode: FileSuggestMode): string {
         switch (mode) {
             case FileSuggestMode.TemplateFiles:
-                return `Templates folder doesn't exist`;
+                return `模板文件夹不存在`;
             case FileSuggestMode.ScriptFiles:
-                return `User Scripts folder doesn't exist`;
+                return `用户脚本文件夹不存在`;
         }
     }
 

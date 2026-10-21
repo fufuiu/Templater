@@ -11,6 +11,9 @@ describe("Autocomplete", () => {
         });
         await obsidianPage.openFile("notes/select module.md");
         await ActiveMarkdownViewPage.typeText("tp.fi");
+        await EditorSuggestionsPage.expectSuggestionNamesToContain("file");
+        expect((await EditorSuggestionsPage.getSuggestionTexts()).join("\n"))
+            .toContain("此模块包含所有与文件相关的内置函数。");
         await EditorSuggestionsPage.selectSuggestionByName("file");
         await ActiveMarkdownViewPage.expectTextToEqual("tp.file\n");
     });
@@ -21,6 +24,9 @@ describe("Autocomplete", () => {
         });
         await obsidianPage.openFile("notes/select module function.md");
         await ActiveMarkdownViewPage.typeText("tp.file.titl");
+        await EditorSuggestionsPage.expectSuggestionNamesToContain("title");
+        expect((await EditorSuggestionsPage.getSuggestionTexts()).join("\n"))
+            .toContain("获取文件的名称。");
         await EditorSuggestionsPage.selectSuggestionByName("title");
         await ActiveMarkdownViewPage.expectTextToEqual("tp.file.title\n");
     });

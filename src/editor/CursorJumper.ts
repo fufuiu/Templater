@@ -73,7 +73,7 @@ export class CursorJumper {
             }
         } catch (error) {
             console.warn(
-                "Templater: Failed to enter insert mode for vim users.",
+                "Templater：无法进入 Vim 插入模式。",
                 error
             );
         }

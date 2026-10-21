@@ -72,7 +72,7 @@ export class Editor {
         if (this.templaterLanguage === undefined) {
             log_error(
                 new TemplaterError(
-                    "Unable to enable syntax highlighting. Could not define language.",
+                    "无法启用语法高亮：无法定义语言。",
                 ),
             );
         }
@@ -141,7 +141,7 @@ export class Editor {
         if (js_mode.name === "null") {
             log_error(
                 new TemplaterError(
-                    "Javascript syntax mode couldn't be found, can't enable syntax highlighting.",
+                    "找不到 JavaScript 语法模式，无法启用语法高亮。",
                 ),
             );
             return;
@@ -152,7 +152,7 @@ export class Editor {
         if (overlay_mode == null) {
             log_error(
                 new TemplaterError(
-                    "Couldn't find customOverlayMode, can't enable syntax highlighting.",
+                    "找不到 customOverlayMode，无法启用语法高亮。",
                 ),
             );
             return;

@@ -13,6 +13,7 @@ node_modules
 # build
 main.js
 main.test.js
+/Templater-*-zh-CN.zip
 *.js.map
 
 # test

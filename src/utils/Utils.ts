@@ -42,10 +42,10 @@ export function resolve_tfolder(app: App, folder_str: string): TFolder {
 
     const folder = app.vault.getAbstractFileByPath(folder_str);
     if (!folder) {
-        throw new TemplaterError(`Folder "${folder_str}" doesn't exist`);
+        throw new TemplaterError(`文件夹“${folder_str}”不存在`);
     }
     if (!(folder instanceof TFolder)) {
-        throw new TemplaterError(`${folder_str} is a file, not a folder`);
+        throw new TemplaterError(`${folder_str} 是文件，不是文件夹`);
     }
 
     return folder;
@@ -56,10 +56,10 @@ export function resolve_tfile(app: App, file_str: string): TFile {
 
     const file = app.vault.getAbstractFileByPath(file_str);
     if (!file) {
-        throw new TemplaterError(`File "${file_str}" doesn't exist`);
+        throw new TemplaterError(`文件“${file_str}”不存在`);
     }
     if (!(file instanceof TFile)) {
-        throw new TemplaterError(`${file_str} is a folder, not a file`);
+        throw new TemplaterError(`${file_str} 是文件夹，不是文件`);
     }
 
     return file;
@@ -145,7 +145,7 @@ function generate_jsdoc_description(summarySection: DocSection): string {
 
         return description.join("\n");
     } catch {
-        console.error("Failed to parse summary section");
+        console.error("解析摘要部分失败");
         return "";
     }
 }

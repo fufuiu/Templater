@@ -39,7 +39,7 @@ export default class TemplaterPlugin extends Plugin {
         this.command_handler.setup();
 
         addIcon("templater-icon", ICON_DATA);
-        this.addRibbonIcon("templater-icon", "Templater", () => {
+        this.addRibbonIcon("templater-icon", "Templater：插入模板", () => {
             this.fuzzy_suggester.insert_template();
         }).setAttribute("id", "rb-templater-icon");
 
@@ -75,10 +75,10 @@ export default class TemplaterPlugin extends Plugin {
         this.settings = settings;
         if (affectedSecuritySettings.length > 0) {
             new Notice(
-                "Templater: The following settings were reset because they " +
-                    "are now device-local: " +
+                "Templater：以下设置已重置，因为它们" +
+                    "现在仅保存在当前设备上：" +
                     affectedSecuritySettings.join(", ") +
-                    ". Re-enable them in Templater settings if you trust this vault.",
+                    "。如果你信任此仓库，请在 Templater 设置中重新启用。",
                 0,
             );
         }

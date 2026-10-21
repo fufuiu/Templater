@@ -132,7 +132,7 @@ export class Documentation {
                             this.plugin.settings.user_scripts_folder,
                         ).filter((x) => x.extension === "js"),
                     ),
-                `User Scripts folder doesn't exist`,
+                `用户脚本文件夹不存在`,
             );
             if (!jsFiles || jsFiles.length === 0) return;
 
@@ -155,7 +155,7 @@ export class Documentation {
 
             const docFiles = await errorWrapper(
                 () => populate_docs_from_user_scripts(this.plugin.app, jsFiles),
-                `Failed to parse user script documentation`,
+                `解析用户脚本说明失败`,
             );
             if (!docFiles || docFiles.length === 0) return;
 

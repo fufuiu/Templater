@@ -44,11 +44,11 @@ export class MultiSuggesterModal<T> extends Modal {
             "modal-button-container",
         );
         new ButtonComponent(buttonContainer)
-            .setButtonText("Save")
+            .setButtonText("保存")
             .setCta()
             .onClick(() => this.save());
         new ButtonComponent(buttonContainer)
-            .setButtonText("Cancel")
+            .setButtonText("取消")
             .onClick(() => this.close());
         if (default_values) {
             this.selectedItems = default_values;
@@ -85,7 +85,7 @@ export class MultiSuggesterModal<T> extends Modal {
             return this.text_items(item);
         }
         return (
-            this.text_items[this.items.indexOf(item)] || "Undefined Text Item"
+            this.text_items[this.items.indexOf(item)] || "未定义的文本项"
         );
     }
 
@@ -125,7 +125,7 @@ export class MultiSuggesterModal<T> extends Modal {
 
     onClose(): void {
         if (!this.submitted) {
-            this.reject(new TemplaterError("Cancelled prompt"));
+            this.reject(new TemplaterError("已取消输入"));
         }
     }
 

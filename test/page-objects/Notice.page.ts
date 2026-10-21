@@ -9,55 +9,55 @@ class Notice {
 
     async expectTemplateParsingErrorNotice() {
         await this.expectNoticeElWithText(
-            "Templater error:\n" +
-                "Template parsing error, aborting.\n" +
-                "Check console for more information",
+            "Templater 错误:\n" +
+                "模板解析出错，操作已终止。\n" +
+                "请查看控制台了解详细信息",
         );
     }
 
     async expectInvalidReferenceDateFormatErrorNotice() {
         await this.expectNoticeElWithText(
-            "Templater error:\n" +
-                "Invalid reference date format, try specifying one with the argument 'reference_format'",
+            "Templater 错误:\n" +
+                "参考日期格式无效，请尝试使用 reference_format 参数指定格式",
         );
     }
 
     async expectInclusionDepthLimitErrorNotice() {
         await this.expectNoticeElWithText(
-            "Templater error:\n" + "Reached inclusion depth limit (max = 10)",
+            "Templater 错误:\n" + "已达到文件引用的最大嵌套深度（10 层）",
         );
     }
     async expectUserScriptsFolderNotFoundErrorNotice(folderName: string) {
         await this.expectNoticeElWithText(
-            `Templater error:\nFolder "${folderName}" doesn't exist`,
+            `Templater 错误:\n文件夹“${folderName}”不存在`,
         );
     }
 
     async expectFileNameCannotIncludeCharsErrorNotice() {
         await this.expectNoticeElWithText(
-            "Templater error:\n" +
-                "File name cannot contain any of these characters: \\ / :",
+            "Templater 错误:\n" +
+                "文件名不能包含以下字符：\\ / :",
         );
     }
 
     async expectCancelledPromptErrorNotice() {
-        await this.expectNoticeElWithText("Templater error:\nCancelled prompt");
+        await this.expectNoticeElWithText("Templater 错误:\n已取消输入");
     }
 
     async expectFailedToLoadUserScriptErrorNotice(path: string) {
         await this.expectNoticeElWithText(
-            "Templater error:\n" +
-                `Failed to load user script at "${path}".\n` +
-                "Check console for more information",
+            "Templater 错误:\n" +
+                `加载用户脚本“${path}”失败。\n` +
+                "请查看控制台了解详细信息",
         );
     }
 
     async expectMigrationNotice(affectedSettings: string[]) {
         await this.expectNoticeElWithText(
-            "Templater: The following settings were reset because they " +
-                "are now device-local: " +
+            "Templater：以下设置已重置，因为它们" +
+                "现在仅保存在当前设备上：" +
                 affectedSettings.join(", ") +
-                ". Re-enable them in Templater settings if you trust this vault.",
+                "。如果你信任此仓库，请在 Templater 设置中重新启用。",
         );
     }
 

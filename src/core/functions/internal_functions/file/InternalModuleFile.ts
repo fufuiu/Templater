@@ -75,7 +75,7 @@ export class InternalModuleFile extends InternalModule {
             if (this.create_new_depth > DEPTH_LIMIT) {
                 this.create_new_depth = 0;
                 throw new TemplaterError(
-                    "Reached create_new depth limit (max = 10)"
+                    "已达到 create_new 的最大嵌套深度（10 层）"
                 );
             }
 
@@ -112,7 +112,7 @@ export class InternalModuleFile extends InternalModule {
             if (!active_editor || !active_editor.editor) {
                 log_error(
                     new TemplaterError(
-                        "No active editor, can't append to cursor."
+                        "没有活动编辑器，无法在光标处追加内容。"
                     )
                 );
                 return;
@@ -163,7 +163,7 @@ export class InternalModuleFile extends InternalModule {
             if (this.include_depth > DEPTH_LIMIT) {
                 this.include_depth -= 1;
                 throw new TemplaterError(
-                    "Reached inclusion depth limit (max = 10)"
+                    "已达到文件引用的最大嵌套深度（10 层）"
                 );
             }
 
@@ -178,7 +178,7 @@ export class InternalModuleFile extends InternalModule {
                 if ((match = this.linkpath_regex.exec(include_link)) === null) {
                     this.include_depth -= 1;
                     throw new TemplaterError(
-                        "Invalid file format, provide an obsidian link between quotes."
+                        "文件格式无效，请提供用引号括起的 Obsidian 链接。"
                     );
                 }
                 const { path, subpath } = parseLinktext(match[1]);
@@ -191,7 +191,7 @@ export class InternalModuleFile extends InternalModule {
                 if (!inc_file) {
                     this.include_depth -= 1;
                     throw new TemplaterError(
-                        `File ${include_link} doesn't exist`
+                        `文件 ${include_link} 不存在`
                     );
                 }
                 inc_file_content = await this.plugin.app.vault.read(inc_file);
@@ -263,7 +263,7 @@ export class InternalModuleFile extends InternalModule {
                     vault_path = this.plugin.app.vault.adapter.getBasePath();
                 } else {
                     throw new TemplaterError(
-                        "app.vault is not a FileSystemAdapter instance"
+                        "app.vault 不是 FileSystemAdapter 实例"
                     );
                 }
             }
@@ -280,7 +280,7 @@ export class InternalModuleFile extends InternalModule {
         return async (new_title: string) => {
             if (new_title.match(/[\\/:]+/g)) {
                 throw new TemplaterError(
-                    "File name cannot contain any of these characters: \\ / :"
+                    "文件名不能包含以下字符：\\ / :"
                 );
             }
             const parent = this.config.target_file.parent;
@@ -301,7 +301,7 @@ export class InternalModuleFile extends InternalModule {
             const active_editor = this.plugin.app.workspace.activeEditor;
             if (!active_editor || !active_editor.editor) {
                 throw new TemplaterError(
-                    "Active editor is null, can't read selection."
+                    "活动编辑器为空，无法读取选中文本。"
                 );
             }
 

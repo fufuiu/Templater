@@ -31,7 +31,7 @@ export class UserScriptsPage extends SettingPage {
                     this.plugin.app,
                     this.plugin.settings.user_scripts_folder,
                 ),
-            `User scripts folder doesn't exist`,
+            `用户脚本文件夹不存在`,
         );
         this.userScripts = Array.isArray(files)
             ? files.filter((file) => file.extension === "js")
@@ -54,7 +54,7 @@ export class UserScriptsPage extends SettingPage {
                 .setHeading()
                 .addExtraButton((cb) => {
                     cb.setIcon("folder")
-                        .setTooltip("Open user scripts folder")
+                        .setTooltip("打开用户脚本文件夹")
                         .onClick(() =>
                             this.openUserScriptsFolderInDefaultApp(),
                         );
@@ -68,13 +68,13 @@ export class UserScriptsPage extends SettingPage {
                         const desc = createFragment();
                         if (!this.plugin.settings.user_scripts_folder) {
                             desc.append(
-                                "No user scripts folder set. Please set the user scripts folder on the previous page.",
+                                "尚未设置用户脚本文件夹，请返回上一页设置。",
                                 desc.createEl("br"),
                                 desc.createEl("br"),
                             );
                         }
                         desc.append(
-                            "User scripts are JavaScript files that are loaded as CommonJS modules. You can then call these functions from your templates using ",
+                            "用户脚本是作为 CommonJS 模块加载的 JavaScript 文件。你可以在模板中使用以下语法调用这些函数：",
                             desc.createEl("code", {
                                 text: "<% tp.user.file_name() %>",
                             }),

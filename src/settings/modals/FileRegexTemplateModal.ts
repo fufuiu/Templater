@@ -24,17 +24,17 @@ export class FileRegexTemplateModal extends Modal {
     }
 
     onOpen() {
-        this.setTitle("File regex template");
+        this.setTitle("文件正则模板");
         this.modalEl.addClass("templater-file-regex-template-modal");
         const { contentEl } = this;
 
         const regexSetting = new Setting(contentEl)
-            .setName("File regex")
+            .setName("文件正则表达式")
             .setDesc(
-                "Regex to match on. Tests against full file path relative to the root of the vault, including file extension.",
+                "用于匹配文件的正则表达式。匹配对象是相对于仓库根目录的完整文件路径，包括扩展名。",
             )
             .addText((cb) => {
-                cb.setPlaceholder("File regex")
+                cb.setPlaceholder("文件正则表达式")
                     .setValue(this.regex)
                     .onChange((value) => {
                         this.regex = value;
@@ -42,15 +42,15 @@ export class FileRegexTemplateModal extends Modal {
             });
 
         const templateSetting = new Setting(contentEl)
-            .setName("Template")
-            .setDesc("Template to apply on match.")
+            .setName("模板")
+            .setDesc("匹配成功时应用的模板。")
             .addText((cb) => {
                 new FileSuggest(
                     cb.inputEl,
                     this.plugin,
                     FileSuggestMode.TemplateFiles,
                 );
-                cb.setPlaceholder("Template")
+                cb.setPlaceholder("模板")
                     .setValue(this.template)
                     .onChange((value) => {
                         this.template = value;
@@ -60,18 +60,18 @@ export class FileRegexTemplateModal extends Modal {
         new Setting(contentEl)
             .addButton((btn) =>
                 btn
-                    .setButtonText("Done")
+                    .setButtonText("完成")
                     .setCta()
                     .onClick(async () => {
                         if (!this.regex) {
                             regexSetting.setErrorMessage(
-                                "File regex cannot be empty",
+                                "文件正则表达式不能为空",
                             );
                             return;
                         }
                         if (!this.template) {
                             templateSetting.setErrorMessage(
-                                "Template cannot be empty",
+                                "模板不能为空",
                             );
                             return;
                         }
@@ -80,7 +80,7 @@ export class FileRegexTemplateModal extends Modal {
                     }),
             )
             .addButton((btn) =>
-                btn.setButtonText("Cancel").onClick(() => this.close()),
+                btn.setButtonText("取消").onClick(() => this.close()),
             );
     }
 

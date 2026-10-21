@@ -2,15 +2,15 @@
     "id": "templater-obsidian",
     "name": "Templater",
     "version": "2.25.1",
-    "description": "Advanced templating and automation using handlebars-like syntax.",
+    "description": "使用类似 Handlebars 的语法，实现高级模板与自动化。",
     "minAppVersion": "1.13.0",
     "author": "SilentVoid",
     "authorUrl": "https://github.com/SilentVoid13",
     "fundingUrl": {
-        "GitHub Sponser (Zachatoo, maintainer)": "https://github.com/sponsors/Zachatoo",
-        "Ko-fi (Zachatoo, maintainer)": "https://ko-fi.com/zachatoo",
-        "GitHub Sponser (SilentVoid13, creator)": "https://github.com/sponsors/SilentVoid13",
-        "Paypal (SilentVoid13, creator)": "https://www.paypal.com/donate?hosted_button_id=U2SRGAFYXT32Q"
+        "GitHub 赞助（Zachatoo，维护者）": "https://github.com/sponsors/Zachatoo",
+        "Ko-fi（Zachatoo，维护者）": "https://ko-fi.com/zachatoo",
+        "GitHub 赞助（SilentVoid13，创作者）": "https://github.com/sponsors/SilentVoid13",
+        "PayPal（SilentVoid13，创作者）": "https://www.paypal.com/donate?hosted_button_id=U2SRGAFYXT32Q"
     },
     "helpUrl": "https://silentvoid13.github.io/Templater/",
     "isDesktopOnly": false

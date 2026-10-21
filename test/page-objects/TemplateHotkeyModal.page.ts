@@ -1,4 +1,4 @@
-type ToggleName = "Insert command" | "Create command";
+type ToggleName = "插入命令" | "创建命令";
 
 class TemplateHotkeyModal {
     get modalEl() {

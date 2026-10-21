@@ -95,7 +95,7 @@ describe("User function autocomplete", () => {
             "Does something from an object export.",
         );
         expect(doSomethingText).toContain("name: The name to use");
-        expect(doSomethingText).toContain("Returns: The result message");
+        expect(doSomethingText).toContain("返回值: The result message");
     });
 
     it("typing tp.user.<script>. does not execute the user script (no RCE via autocomplete)", async () => {

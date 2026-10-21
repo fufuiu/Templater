@@ -12,14 +12,14 @@ export class IgnoreFolderModal extends Modal {
     }
 
     onOpen() {
-        this.setTitle("Add exclusion");
+        this.setTitle("添加排除规则");
         const { contentEl } = this;
 
         this.modalEl.addClass("templater-ignore-folder-modal");
 
         const folderSetting = new Setting(contentEl)
-            .setName("Folder")
-            .setDesc("Enter a path, e.g. meta/templates")
+            .setName("文件夹")
+            .setDesc("输入路径，例如 meta/templates")
             .addText((cb) => {
                 new FolderSuggest(this.app, cb.inputEl);
                 cb.onChange((value) => {
@@ -29,18 +29,18 @@ export class IgnoreFolderModal extends Modal {
 
         const buttonContainer = contentEl.createDiv("modal-button-container");
         new ButtonComponent(buttonContainer)
-            .setButtonText("Done")
+            .setButtonText("完成")
             .setCta()
             .onClick(async () => {
                 if (!this.folder) {
-                    folderSetting.setErrorMessage("Folder cannot be empty");
+                    folderSetting.setErrorMessage("文件夹不能为空");
                     return;
                 }
                 await this.onSubmit(this.folder);
                 this.close();
             });
         new ButtonComponent(buttonContainer)
-            .setButtonText("Cancel")
+            .setButtonText("取消")
             .onClick(() => this.close());
     }
 

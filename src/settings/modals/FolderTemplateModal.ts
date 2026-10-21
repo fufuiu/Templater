@@ -26,16 +26,16 @@ export class FolderTemplateModal extends Modal {
     }
 
     onOpen() {
-        this.setTitle("Folder template");
+        this.setTitle("文件夹模板");
         this.modalEl.addClass("templater-folder-template-modal");
         const { contentEl } = this;
 
         const folderSetting = new Setting(contentEl)
-            .setName("Folder")
-            .setDesc("Folder to match on. Includes subfolders of this folder.")
+            .setName("文件夹")
+            .setDesc("需要匹配的文件夹，包括其子文件夹。")
             .addText((cb) => {
                 new FolderSuggest(this.app, cb.inputEl);
-                cb.setPlaceholder("Folder")
+                cb.setPlaceholder("文件夹")
                     .setValue(this.folder)
                     .onChange((value) => {
                         this.folder = value;
@@ -43,15 +43,15 @@ export class FolderTemplateModal extends Modal {
             });
 
         const templateSetting = new Setting(contentEl)
-            .setName("Template")
-            .setDesc("Template to apply on match.")
+            .setName("模板")
+            .setDesc("匹配成功时应用的模板。")
             .addText((cb) => {
                 new FileSuggest(
                     cb.inputEl,
                     this.plugin,
                     FileSuggestMode.TemplateFiles,
                 );
-                cb.setPlaceholder("Template")
+                cb.setPlaceholder("模板")
                     .setValue(this.template)
                     .onChange((value) => {
                         this.template = value;
@@ -61,18 +61,18 @@ export class FolderTemplateModal extends Modal {
         new Setting(contentEl)
             .addButton((btn) =>
                 btn
-                    .setButtonText("Done")
+                    .setButtonText("完成")
                     .setCta()
                     .onClick(async () => {
                         if (!this.folder) {
                             folderSetting.setErrorMessage(
-                                "Folder cannot be empty",
+                                "文件夹不能为空",
                             );
                             return;
                         }
                         if (!this.template) {
                             templateSetting.setErrorMessage(
-                                "Template cannot be empty",
+                                "模板不能为空",
                             );
                             return;
                         }
@@ -86,7 +86,7 @@ export class FolderTemplateModal extends Modal {
                     }),
             )
             .addButton((btn) =>
-                btn.setButtonText("Cancel").onClick(() => this.close()),
+                btn.setButtonText("取消").onClick(() => this.close()),
             );
     }
 

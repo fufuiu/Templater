@@ -19,22 +19,22 @@ export class SystemCommandModal extends Modal {
     }
 
     onOpen() {
-        this.setTitle("User function");
+        this.setTitle("用户函数");
         this.modalEl.addClass("templater-system-command-modal");
         const { contentEl } = this;
 
         const functionNameSetting = new Setting(contentEl)
-            .setName("Function name")
+            .setName("函数名")
             .addText((cb) => {
-                cb.setPlaceholder("Function name")
+                cb.setPlaceholder("函数名")
                     .setValue(this.name)
                     .onChange((value) => {
                         this.name = value;
                     });
             });
 
-        new Setting(contentEl).setName("System command").addTextArea((cb) => {
-            cb.setPlaceholder("System command")
+        new Setting(contentEl).setName("系统命令").addTextArea((cb) => {
+            cb.setPlaceholder("系统命令")
                 .setValue(this.command)
                 .onChange((value) => {
                     this.command = value;
@@ -45,11 +45,11 @@ export class SystemCommandModal extends Modal {
         new Setting(contentEl)
             .addButton((btn) =>
                 btn
-                    .setButtonText("Done")
+                    .setButtonText("完成")
                     .setCta()
                     .onClick(async () => {
                         const error = !this.name
-                            ? "Function name cannot be empty"
+                            ? "函数名不能为空"
                             : this.validateName(this.name);
                         if (error) {
                             functionNameSetting.setErrorMessage(error);
@@ -60,7 +60,7 @@ export class SystemCommandModal extends Modal {
                     }),
             )
             .addButton((btn) =>
-                btn.setButtonText("Cancel").onClick(() => this.close()),
+                btn.setButtonText("取消").onClick(() => this.close()),
             );
     }
 

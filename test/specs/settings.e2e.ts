@@ -14,7 +14,7 @@ import { IntellisenseRenderOption } from "../../src/settings/RenderSettings/Inte
 import type { TemplateHotkeyEntry } from "../../src/settings/TemplateHotkeys";
 
 describe("Settings", () => {
-    describe("Automatic jump to cursor", () => {
+    describe("自动跳转到光标位置", () => {
         it("enables auto_jump_to_cursor when toggled on", async () => {
             await resetVault("test/vault", {});
             await browser.executeObsidian(async ({ plugins }) => {
@@ -24,7 +24,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Automatic jump to cursor",
+                "自动跳转到光标位置",
             );
 
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -42,7 +42,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Automatic jump to cursor",
+                "自动跳转到光标位置",
             );
 
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -52,7 +52,7 @@ describe("Settings", () => {
         });
     });
 
-    describe("Jump to note content after creating note", () => {
+    describe("创建笔记后跳转到正文", () => {
         it("enables jump_to_cursor_after_file_name when toggled on", async () => {
             await resetVault("test/vault", {});
             await browser.executeObsidian(async ({ plugins }) => {
@@ -62,7 +62,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Jump to note content after creating note",
+                "创建笔记后跳转到正文",
             );
 
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -80,7 +80,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Jump to note content after creating note",
+                "创建笔记后跳转到正文",
             );
 
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -90,7 +90,7 @@ describe("Settings", () => {
         });
     });
 
-    describe("Syntax highlighting on desktop", () => {
+    describe("桌面端语法高亮", () => {
         it("disables syntax_highlighting when toggled off", async () => {
             await resetVault("test/vault", {});
             await browser.executeObsidian(async ({ plugins }) => {
@@ -100,7 +100,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Syntax highlighting on desktop",
+                "桌面端语法高亮",
             );
 
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -118,7 +118,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Syntax highlighting on desktop",
+                "桌面端语法高亮",
             );
 
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -128,7 +128,7 @@ describe("Settings", () => {
         });
     });
 
-    describe("Syntax highlighting on mobile", () => {
+    describe("移动端语法高亮", () => {
         it("enables syntax_highlighting_mobile when toggled on", async () => {
             await resetVault("test/vault", {});
             await browser.executeObsidian(async ({ plugins }) => {
@@ -138,7 +138,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Syntax highlighting on mobile",
+                "移动端语法高亮",
             );
 
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -156,7 +156,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Syntax highlighting on mobile",
+                "移动端语法高亮",
             );
 
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -166,7 +166,7 @@ describe("Settings", () => {
         });
     });
 
-    describe("Trigger Templater on new file creation", () => {
+    describe("创建新文件时触发 Templater", () => {
         it("blocks enabling trigger_on_file_creation until risks are acknowledged", async () => {
             await resetVault("test/vault", {});
             await browser.executeObsidian(({ app }) => {
@@ -177,7 +177,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Trigger Templater on new file creation",
+                "创建新文件时触发 Templater",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.expectEnableBtnDisabled();
@@ -199,7 +199,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Trigger Templater on new file creation",
+                "创建新文件时触发 Templater",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.checkUnderstandRisks();
@@ -221,14 +221,14 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Trigger Templater on new file creation",
+                "创建新文件时触发 Templater",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.checkUnderstandRisks();
             await ConfirmDangerousSettingModalPage.clickCancel();
 
             await TemplaterSettingsPage.expectToggleValueByName(
-                "Trigger Templater on new file creation",
+                "创建新文件时触发 Templater",
                 false,
             );
         });
@@ -243,7 +243,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Trigger Templater on new file creation",
+                "创建新文件时触发 Templater",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.checkUnderstandRisks();
@@ -265,14 +265,14 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Trigger Templater on new file creation",
+                "创建新文件时触发 Templater",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.checkUnderstandRisks();
             await ConfirmDangerousSettingModalPage.clickEnable();
 
             await TemplaterSettingsPage.expectToggleValueByName(
-                "Trigger Templater on new file creation",
+                "创建新文件时触发 Templater",
                 true,
             );
         });
@@ -287,7 +287,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Trigger Templater on new file creation",
+                "创建新文件时触发 Templater",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.checkUnderstandRisks();
@@ -295,12 +295,12 @@ describe("Settings", () => {
 
             // If Excluded folders is now visible, navigating to it will succeed
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Excluded folders",
+                "排除的文件夹",
             );
         });
     });
 
-    describe("Template matching mode", () => {
+    describe("模板匹配方式", () => {
         beforeEach(async () => {
             await resetVault("test/vault", {});
             await browser.executeObsidian(async ({ app, plugins }) => {
@@ -316,8 +316,8 @@ describe("Settings", () => {
 
         it("updates trigger_on_file_creation_mode to 'folder' when Folder templates is selected", async () => {
             await TemplaterSettingsPage.selectDropdownOptionByName(
-                "Template matching mode",
-                "Folder templates",
+                "模板匹配方式",
+                "文件夹模板",
             );
 
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -328,8 +328,8 @@ describe("Settings", () => {
 
         it("updates trigger_on_file_creation_mode to 'regex' when File regex templates is selected", async () => {
             await TemplaterSettingsPage.selectDropdownOptionByName(
-                "Template matching mode",
-                "File regex templates",
+                "模板匹配方式",
+                "文件正则模板",
             );
 
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -339,7 +339,7 @@ describe("Settings", () => {
         });
     });
 
-    describe("Excluded folders", () => {
+    describe("排除的文件夹", () => {
         it("adds a folder exclusion when submitted", async () => {
             await resetVault("test/vault", {});
             await browser.executeObsidian(async ({ app, plugins }) => {
@@ -353,9 +353,9 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Excluded folders",
+                "排除的文件夹",
             );
-            await TemplaterSettingsPage.clickButtonWithText("Add folder");
+            await TemplaterSettingsPage.clickButtonWithText("添加文件夹");
             await IgnoreFolderModalPage.waitForDisplayed();
             await IgnoreFolderModalPage.setFolderPath("meta/templates");
             await IgnoreFolderModalPage.clickDone();
@@ -379,9 +379,9 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Excluded folders",
+                "排除的文件夹",
             );
-            await TemplaterSettingsPage.clickButtonWithText("Add folder");
+            await TemplaterSettingsPage.clickButtonWithText("添加文件夹");
             await IgnoreFolderModalPage.waitForDisplayed();
             await IgnoreFolderModalPage.setFolderPath("meta/templates");
             await IgnoreFolderModalPage.clickCancel();
@@ -405,7 +405,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Excluded folders",
+                "排除的文件夹",
             );
             await TemplaterSettingsPage.clickButtonWithText("Delete");
 
@@ -416,7 +416,7 @@ describe("Settings", () => {
         });
     });
 
-    describe("Folder templates", () => {
+    describe("文件夹模板", () => {
         it("adds a folder template when folder and template are entered", async () => {
             await resetVault("test/vault", {
                 "templates/default.md": "Default template",
@@ -433,10 +433,10 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Folder templates",
+                "文件夹模板",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add folder template",
+                "添加文件夹模板",
             );
             await FolderTemplateModalPage.waitForDisplayed();
             await FolderTemplateModalPage.setFolder("notes");
@@ -468,10 +468,10 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Folder templates",
+                "文件夹模板",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add folder template",
+                "添加文件夹模板",
             );
             await FolderTemplateModalPage.waitForDisplayed();
             await FolderTemplateModalPage.setFolder("bases");
@@ -508,10 +508,10 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Folder templates",
+                "文件夹模板",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add folder template",
+                "添加文件夹模板",
             );
             await FolderTemplateModalPage.waitForDisplayed();
             await FolderTemplateModalPage.setFolder("notes");
@@ -539,7 +539,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Folder templates",
+                "文件夹模板",
             );
             await TemplaterSettingsPage.clickButtonWithText("Delete");
 
@@ -568,7 +568,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Folder templates",
+                "文件夹模板",
             );
             await TemplaterSettingsPage.clickSettingRowByName("notes");
             await FolderTemplateModalPage.waitForDisplayed();
@@ -583,7 +583,7 @@ describe("Settings", () => {
         });
     });
 
-    describe("File regex templates", () => {
+    describe("文件正则模板", () => {
         it("adds a file regex template when regex and template are entered", async () => {
             await resetVault("test/vault", {
                 "templates/default.md": "Default template",
@@ -600,10 +600,10 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "File regex templates",
+                "文件正则模板",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add file regex template",
+                "添加文件正则模板",
             );
             await FileRegexTemplateModalPage.waitForDisplayed();
             await FileRegexTemplateModalPage.setRegex("notes/.*\\.md");
@@ -636,10 +636,10 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "File regex templates",
+                "文件正则模板",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add file regex template",
+                "添加文件正则模板",
             );
             await FileRegexTemplateModalPage.waitForDisplayed();
             await FileRegexTemplateModalPage.setRegex(".*\\.canvas");
@@ -679,7 +679,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "File regex templates",
+                "文件正则模板",
             );
             await TemplaterSettingsPage.clickSettingRowByName("notes/.*\\.md");
             await FileRegexTemplateModalPage.waitForDisplayed();
@@ -693,7 +693,7 @@ describe("Settings", () => {
         });
     });
 
-    describe("Enable startup templates", () => {
+    describe("启用启动模板", () => {
         it("blocks enabling startup templates until risks are acknowledged", async () => {
             await resetVault("test/vault", {});
             await browser.executeObsidian(({ app }) => {
@@ -704,7 +704,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Enable startup templates",
+                "启用启动模板",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.expectEnableBtnDisabled();
@@ -726,7 +726,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Enable startup templates",
+                "启用启动模板",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.checkUnderstandRisks();
@@ -748,14 +748,14 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Enable startup templates",
+                "启用启动模板",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.checkUnderstandRisks();
             await ConfirmDangerousSettingModalPage.clickCancel();
 
             await TemplaterSettingsPage.expectToggleValueByName(
-                "Enable startup templates",
+                "启用启动模板",
                 false,
             );
         });
@@ -770,7 +770,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Enable startup templates",
+                "启用启动模板",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.checkUnderstandRisks();
@@ -792,20 +792,20 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Enable startup templates",
+                "启用启动模板",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.checkUnderstandRisks();
             await ConfirmDangerousSettingModalPage.clickEnable();
 
             await TemplaterSettingsPage.expectToggleValueByName(
-                "Enable startup templates",
+                "启用启动模板",
                 true,
             );
         });
     });
 
-    describe("Startup templates", () => {
+    describe("启动模板", () => {
         it("adds a startup template path when submitted", async () => {
             await resetVault("test/vault", {
                 "templates/daily.md": "Daily note",
@@ -820,10 +820,10 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Startup templates",
+                "启动模板",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add new startup template",
+                "添加启动模板",
             );
             await StartupTemplateModalPage.waitForDisplayed();
             await StartupTemplateModalPage.setTemplatePath(
@@ -851,10 +851,10 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Startup templates",
+                "启动模板",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add new startup template",
+                "添加启动模板",
             );
             await StartupTemplateModalPage.waitForDisplayed();
             await StartupTemplateModalPage.setTemplatePath(
@@ -884,7 +884,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Startup templates",
+                "启动模板",
             );
             await TemplaterSettingsPage.clickButtonWithText("Delete");
 
@@ -895,7 +895,7 @@ describe("Settings", () => {
         });
     });
 
-    describe("Template hotkeys", () => {
+    describe("模板快捷键", () => {
         const INSERT_DAILY_COMMAND_ID = "templater-obsidian:templates/daily.md";
         const CREATE_DAILY_COMMAND_ID =
             "templater-obsidian:create-templates/daily.md";
@@ -927,10 +927,10 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Template hotkeys",
+                "模板快捷键",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add template hotkey",
+                "添加模板快捷键",
             );
             await TemplateHotkeyModalPage.waitForDisplayed();
             await TemplateHotkeyModalPage.setTemplatePath("templates/daily.md");
@@ -952,17 +952,17 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Template hotkeys",
+                "模板快捷键",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add template hotkey",
+                "添加模板快捷键",
             );
             await TemplateHotkeyModalPage.waitForDisplayed();
             await TemplateHotkeyModalPage.setTemplatePath("templates/daily.md");
             await TemplateHotkeyModalPage.clickDoneExpectingError();
 
             await expect(TemplateHotkeyModalPage.errorEl).toHaveText(
-                "This template already has a hotkey",
+                "此模板已配置快捷键",
             );
             await TemplateHotkeyModalPage.clickCancel();
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -979,10 +979,10 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Template hotkeys",
+                "模板快捷键",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add template hotkey",
+                "添加模板快捷键",
             );
             await TemplateHotkeyModalPage.waitForDisplayed();
             await TemplateHotkeyModalPage.setTemplatePath("templates/daily.md");
@@ -1002,14 +1002,14 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Template hotkeys",
+                "模板快捷键",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add template hotkey",
+                "添加模板快捷键",
             );
             await TemplateHotkeyModalPage.waitForDisplayed();
             await TemplateHotkeyModalPage.setTemplatePath("templates/daily.md");
-            await TemplateHotkeyModalPage.clickToggle("Create command");
+            await TemplateHotkeyModalPage.clickToggle("创建命令");
             await TemplateHotkeyModalPage.clickDone();
 
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -1034,19 +1034,19 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Template hotkeys",
+                "模板快捷键",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add template hotkey",
+                "添加模板快捷键",
             );
             await TemplateHotkeyModalPage.waitForDisplayed();
             await TemplateHotkeyModalPage.setTemplatePath("templates/daily.md");
-            await TemplateHotkeyModalPage.clickToggle("Insert command");
-            await TemplateHotkeyModalPage.clickToggle("Create command");
+            await TemplateHotkeyModalPage.clickToggle("插入命令");
+            await TemplateHotkeyModalPage.clickToggle("创建命令");
             await TemplateHotkeyModalPage.clickDoneExpectingError();
 
             await expect(TemplateHotkeyModalPage.errorEl).toHaveText(
-                "At least one command must be enabled",
+                "至少需要启用一个命令",
             );
             await TemplateHotkeyModalPage.clickCancel();
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -1063,7 +1063,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Template hotkeys",
+                "模板快捷键",
             );
             await TemplaterSettingsPage.clickButtonWithText("Delete");
 
@@ -1083,13 +1083,13 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Template hotkeys",
+                "模板快捷键",
             );
             await TemplaterSettingsPage.clickSettingRowByName(
                 "templates/daily.md",
             );
             await TemplateHotkeyModalPage.waitForDisplayed();
-            await TemplateHotkeyModalPage.clickToggle("Create command");
+            await TemplateHotkeyModalPage.clickToggle("创建命令");
             await TemplateHotkeyModalPage.clickDone();
 
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -1120,17 +1120,17 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Template hotkeys",
+                "模板快捷键",
             );
             await TemplaterSettingsPage.clickSettingRowByName(
                 "templates/daily.md",
             );
             await TemplateHotkeyModalPage.waitForDisplayed();
             await TemplateHotkeyModalPage.expectToggleValue(
-                "Create command",
+                "创建命令",
                 false,
             );
-            await TemplateHotkeyModalPage.clickToggle("Create command");
+            await TemplateHotkeyModalPage.clickToggle("创建命令");
             await TemplateHotkeyModalPage.clickDone();
 
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -1148,14 +1148,14 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "Template hotkeys",
+                "模板快捷键",
             );
             await TemplaterSettingsPage.clickSettingRowByName(
                 "templates/daily.md",
             );
             await TemplateHotkeyModalPage.waitForDisplayed();
             await TemplateHotkeyModalPage.expectToggleValue(
-                "Insert command",
+                "插入命令",
                 true,
             );
             await TemplateHotkeyModalPage.clickDone();
@@ -1189,14 +1189,14 @@ describe("Settings", () => {
         });
     });
 
-    describe("User scripts", () => {
+    describe("用户脚本", () => {
         // TODO: fix this. Since Obsidian 1.13.7, `PluginSettingTab.update()` no longer re-renders
         // the open `SettingPage`, so `UserScriptsPage` doesn't refresh on vault events.
         it.skip("shows newly created script after vault event", async () => {
             await resetVault("test/vault");
             await TemplaterSettingsPage.open();
 
-            await TemplaterSettingsPage.clickSettingRowByName("User scripts");
+            await TemplaterSettingsPage.clickSettingRowByName("用户脚本");
 
             await VaultPage.createFile(
                 "user scripts/my_script.js",
@@ -1211,7 +1211,7 @@ describe("Settings", () => {
         });
     });
 
-    describe("User script intellisense", () => {
+    describe("用户脚本智能提示", () => {
         it("updates intellisense_render when a different option is selected", async () => {
             await resetVault("test/vault", {});
             await browser.executeObsidian(async ({ plugins }, initial) => {
@@ -1222,8 +1222,8 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.selectDropdownOptionByName(
-                "User script intellisense",
-                "Turn off intellisense",
+                "用户脚本智能提示",
+                "关闭智能提示",
             );
 
             await TemplaterDataFilePage.expectSettingToEqual(
@@ -1233,7 +1233,7 @@ describe("Settings", () => {
         });
     });
 
-    describe("Enable user system command functions", () => {
+    describe("启用用户系统命令函数", () => {
         it("blocks enabling system commands until risks are acknowledged", async () => {
             await resetVault("test/vault", {});
             await browser.executeObsidian(({ app }) => {
@@ -1244,7 +1244,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Enable user system command functions",
+                "启用用户系统命令函数",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.expectEnableBtnDisabled();
@@ -1266,7 +1266,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Enable user system command functions",
+                "启用用户系统命令函数",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.checkUnderstandRisks();
@@ -1288,14 +1288,14 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Enable user system command functions",
+                "启用用户系统命令函数",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.checkUnderstandRisks();
             await ConfirmDangerousSettingModalPage.clickCancel();
 
             await TemplaterSettingsPage.expectToggleValueByName(
-                "Enable user system command functions",
+                "启用用户系统命令函数",
                 false,
             );
         });
@@ -1310,7 +1310,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Enable user system command functions",
+                "启用用户系统命令函数",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.checkUnderstandRisks();
@@ -1332,20 +1332,20 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickToggleByName(
-                "Enable user system command functions",
+                "启用用户系统命令函数",
             );
             await ConfirmDangerousSettingModalPage.waitForDisplayed();
             await ConfirmDangerousSettingModalPage.checkUnderstandRisks();
             await ConfirmDangerousSettingModalPage.clickEnable();
 
             await TemplaterSettingsPage.expectToggleValueByName(
-                "Enable user system command functions",
+                "启用用户系统命令函数",
                 true,
             );
         });
     });
 
-    describe("Shell binary location", () => {
+    describe("Shell 程序位置", () => {
         it("updates shell_path when changed", async () => {
             await resetVault("test/vault", {});
             await browser.executeObsidian(async ({ app, plugins }) => {
@@ -1358,7 +1358,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.setTextInputByName(
-                "Shell binary location",
+                "Shell 程序位置",
                 "/bin/zsh",
             );
 
@@ -1369,7 +1369,7 @@ describe("Settings", () => {
         });
     });
 
-    describe("User system command functions", () => {
+    describe("用户系统命令函数", () => {
         it("shows validation error when function name is empty", async () => {
             await resetVault("test/vault", {});
             await browser.executeObsidian(async ({ app, plugins }) => {
@@ -1382,10 +1382,10 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "User system command functions",
+                "用户系统命令函数",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add new user function",
+                "添加用户函数",
             );
             await SystemCommandModalPage.waitForDisplayed();
             await SystemCommandModalPage.clickDone();
@@ -1405,10 +1405,10 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "User system command functions",
+                "用户系统命令函数",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add new user function",
+                "添加用户函数",
             );
             await SystemCommandModalPage.waitForDisplayed();
             await SystemCommandModalPage.setFunctionName("myFunc");
@@ -1435,10 +1435,10 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "User system command functions",
+                "用户系统命令函数",
             );
             await TemplaterSettingsPage.clickButtonWithText(
-                "Add new user function",
+                "添加用户函数",
             );
             await SystemCommandModalPage.waitForDisplayed();
             await SystemCommandModalPage.setFunctionName("existingFunc");
@@ -1462,7 +1462,7 @@ describe("Settings", () => {
             await TemplaterSettingsPage.open();
 
             await TemplaterSettingsPage.clickSettingRowByName(
-                "User system command functions",
+                "用户系统命令函数",
             );
             await TemplaterSettingsPage.clickButtonWithText("Delete");
 

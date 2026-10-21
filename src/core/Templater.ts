@@ -93,7 +93,7 @@ export class Templater {
 
     async read_and_parse_template(config: RunningConfig): Promise<string> {
         if (!(config.template_file instanceof TFile)) {
-            throw new TemplaterError("Template file is not a TFile");
+            throw new TemplaterError("模板文件不是 TFile 对象");
         }
         const template_content = await this.plugin.app.vault.read(
             config.template_file,
@@ -181,7 +181,7 @@ export class Templater {
                 await this.plugin.app.vault.createFolder(folder_path);
             }
             return this.plugin.app.vault.create(path, "");
-        }, `Couldn't create ${extension} file.`);
+        }, `无法创建 ${extension} 文件。`);
 
         if (created_note == null) {
             return;
@@ -199,7 +199,7 @@ export class Templater {
             );
             output_content = await errorWrapper(
                 async () => this.read_and_parse_template(running_config),
-                "Template parsing error, aborting.",
+                "模板解析出错，操作已终止。",
             );
         } else {
             running_config = this.create_running_config(
@@ -209,7 +209,7 @@ export class Templater {
             );
             output_content = await errorWrapper(
                 async () => this.parse_template(running_config, template),
-                "Template parsing error, aborting.",
+                "模板解析出错，操作已终止。",
             );
         }
 
@@ -229,7 +229,7 @@ export class Templater {
         if (open_new_note) {
             const active_leaf = this.plugin.app.workspace.getLeaf(false);
             if (!active_leaf) {
-                log_error(new TemplaterError("No active leaf"));
+                log_error(new TemplaterError("没有活动窗格"));
                 return;
             }
             await active_leaf.openFile(created_note, {
@@ -258,7 +258,7 @@ export class Templater {
         const active_editor = this.plugin.app.workspace.activeEditor;
         if (!active_editor || !active_editor.file || !active_editor.editor) {
             log_error(
-                new TemplaterError("No active editor, can't append templates."),
+                new TemplaterError("没有活动编辑器，无法追加模板。"),
             );
             return;
         }
@@ -271,7 +271,7 @@ export class Templater {
         );
         const output_content = await errorWrapper(
             async () => this.read_and_parse_template(running_config),
-            "Template parsing error, aborting.",
+            "模板解析出错，操作已终止。",
         );
         // errorWrapper failed
         if (output_content == null) {
@@ -334,7 +334,7 @@ export class Templater {
         );
         let output_content = await errorWrapper(
             async () => this.read_and_parse_template(running_config),
-            "Template parsing error, aborting.",
+            "模板解析出错，操作已终止。",
         );
         // errorWrapper failed
         if (output_content == null) {
@@ -420,7 +420,7 @@ export class Templater {
         if (!active_editor || !active_editor.file) {
             log_error(
                 new TemplaterError(
-                    "Active editor is null, can't overwrite content",
+                    "活动编辑器为空，无法覆盖内容",
                 ),
             );
             return;
@@ -441,7 +441,7 @@ export class Templater {
         );
         const output_content = await errorWrapper(
             async () => this.read_and_parse_template(running_config),
-            "Template parsing error, aborting.",
+            "模板解析出错，操作已终止。",
         );
         // errorWrapper failed
         if (output_content == null) {
@@ -512,7 +512,7 @@ export class Templater {
                                 functions_object,
                             );
                         },
-                        `Command Parsing error in dynamic command '${complete_command}'`,
+                        `动态命令“${complete_command}”解析出错`,
                     );
                     if (command_output == null) {
                         return;
@@ -648,7 +648,7 @@ export class Templater {
                 async (): Promise<TFile> => {
                     return resolve_tfile(app, folder_template_match);
                 },
-                `Couldn't find template ${folder_template_match}`,
+                `找不到模板 ${folder_template_match}`,
             );
             // errorWrapper failed
             if (template_file == null) {
@@ -665,7 +665,7 @@ export class Templater {
                 async (): Promise<TFile> => {
                     return resolve_tfile(app, file_template_match);
                 },
-                `Couldn't find template ${file_template_match}`,
+                `找不到模板 ${file_template_match}`,
             );
             // errorWrapper failed
             if (template_file == null) {
@@ -679,7 +679,7 @@ export class Templater {
                 await templater.overwrite_file_commands(file);
             } else {
                 console.debug(
-                    `Templater skipped parsing ${file.path} because file size exceeds ${SIZE_LIMIT}`,
+                    `Templater 已跳过解析 ${file.path}，因为文件大小超过 ${SIZE_LIMIT}`,
                 );
             }
         }
@@ -695,7 +695,7 @@ export class Templater {
             }
             const file = errorWrapperSync(
                 () => resolve_tfile(this.plugin.app, template),
-                `Couldn't find startup template "${template}"`,
+                `找不到启动模板“${template}”`,
             );
             if (!file) {
                 continue;
@@ -709,7 +709,7 @@ export class Templater {
             );
             await errorWrapper(
                 async () => this.read_and_parse_template(running_config),
-                `Startup Template parsing error, aborting.`,
+                `启动模板解析出错，操作已终止。`,
             );
             await this.end_templater_task(path);
         }

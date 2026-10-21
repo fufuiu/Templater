@@ -46,11 +46,11 @@ export class InternalModuleWeb extends InternalModule {
         try {
             const response = await requestUrl(url);
             if (response.status < 200 && response.status >= 300) {
-                throw new TemplaterError("Error performing GET request");
+                throw new TemplaterError("执行 GET 请求时出错");
             }
             return response;
         } catch {
-            throw new TemplaterError("Error performing GET request");
+            throw new TemplaterError("执行 GET 请求时出错");
         }
     }
 
@@ -78,8 +78,8 @@ export class InternalModuleWeb extends InternalModule {
 
                 return new_content;
             } catch {
-                new TemplaterError("Error generating daily quote");
-                return "Error generating daily quote";
+                new TemplaterError("生成每日引言时出错");
+                return "生成每日引言时出错";
             }
         };
     }
@@ -110,8 +110,8 @@ export class InternalModuleWeb extends InternalModule {
                 }
                 return `![photo by ${response.photog}(${response.photogUrl}) on Unsplash](${url})`;
             } catch {
-                new TemplaterError("Error generating random picture");
-                return "Error generating random picture";
+                new TemplaterError("生成随机图片时出错");
+                return "生成随机图片时出错";
             }
         };
     }
@@ -132,7 +132,7 @@ export class InternalModuleWeb extends InternalModule {
                                 return obj[key] as Record<string, unknown>;
                             } else {
                                 throw new Error(
-                                    `Path ${path} not found in the JSON response`,
+                                    `JSON 响应中找不到路径 ${path}`,
                                 );
                             }
                         }, jsonData) as unknown as string;
@@ -141,7 +141,7 @@ export class InternalModuleWeb extends InternalModule {
                 return jsonData as unknown as string;
             } catch (error) {
                 console.error(error);
-                throw new TemplaterError("Error fetching and extracting value");
+                throw new TemplaterError("获取并提取数据时出错");
             }
         };
     }

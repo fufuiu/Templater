@@ -17,7 +17,7 @@ export class FuzzySuggester extends FuzzySuggestModal<TFile> {
     constructor(plugin: TemplaterPlugin) {
         super(plugin.app);
         this.plugin = plugin;
-        this.setPlaceholder("Type name of a template...");
+        this.setPlaceholder("输入模板名称…");
         this.containerEl.addClass("templater-fuzzy-suggester-modal");
     }
 
@@ -31,7 +31,7 @@ export class FuzzySuggester extends FuzzySuggestModal<TFile> {
                     this.plugin.app,
                     this.plugin.settings.templates_folder,
                 ),
-            `Couldn't retrieve template files from templates folder ${this.plugin.settings.templates_folder}`,
+            `无法从模板文件夹 ${this.plugin.settings.templates_folder} 获取模板文件`,
         );
         if (!files) {
             return [];

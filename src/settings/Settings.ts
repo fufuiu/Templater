@@ -148,19 +148,19 @@ export class TemplaterSettingTab extends PluginSettingTab {
             Record<keyof LocalSettings, { title: string; warning: string }>
         > = {
             enable_startup_templates: {
-                title: "Enable startup templates",
+                title: "启用启动模板",
                 warning:
-                    "This can be dangerous if you set a startup template with unknown/unsafe content. Make sure that every startup template's content is safe.",
+                    "启动模板包含未知或不安全的内容时，启用此选项可能带来风险。请确保每个启动模板的内容都安全。",
             },
             trigger_on_file_creation: {
-                title: "Trigger Templater on new file creation",
+                title: "创建新文件时触发 Templater",
                 warning:
-                    "This can be dangerous if you create new files with unknown / unsafe content on creation. Make sure that every new file's content is safe on creation.",
+                    "新建文件包含未知或不安全的内容时，启用此选项可能带来风险。请确保每个新文件在创建时的内容都安全。",
             },
             enable_system_commands: {
-                title: "Enable user system command functions",
+                title: "启用用户系统命令函数",
                 warning:
-                    "It can be dangerous to execute arbitrary system commands from untrusted sources. Only run system commands that you understand, from trusted sources.",
+                    "执行来源不可信的任意系统命令可能带来风险。请只运行你了解且来源可信的系统命令。",
             },
         };
 
@@ -222,25 +222,25 @@ export class TemplaterSettingTab extends PluginSettingTab {
             type: "group",
             items: [
                 {
-                    name: "Internal variables and functions",
+                    name: "内置变量与函数",
                     desc: (() => {
                         const internalFunctionsDesc = createFragment();
                         internalFunctionsDesc.append(
-                            "Templater provides multiples predefined variables / functions that you can use.",
+                            "Templater 提供了多种可直接使用的内置变量和函数。",
                             internalFunctionsDesc.createEl("br"),
-                            "Check the ",
+                            "查看",
                             internalFunctionsDesc.createEl("a", {
                                 href: "https://silentvoid13.github.io/Templater/",
-                                text: "documentation",
+                                text: "文档",
                             }),
-                            " to get a list of all the available internal variables / functions.",
+                            "，了解所有可用的内置变量和函数。",
                         );
                         return internalFunctionsDesc;
                     })(),
                 },
                 {
-                    name: "Template folder location",
-                    desc: "Files in this folder will be available as templates.",
+                    name: "模板文件夹位置",
+                    desc: "此文件夹中的文件可作为模板使用。",
                     control: {
                         type: "folder",
                         key: "templates_folder",
@@ -248,27 +248,27 @@ export class TemplaterSettingTab extends PluginSettingTab {
                 },
                 {
                     type: "page",
-                    name: "Template hotkeys",
+                    name: "模板快捷键",
                     desc: (() => {
                         const templateHotkeysDesc = createFragment();
                         templateHotkeysDesc.append(
-                            "Bind templates to ",
+                            "将模板绑定到",
                             templateHotkeysDesc.createEl("a", {
                                 href: "https://obsidian.md/help/plugins/command-palette",
-                                text: "commands",
+                                text: "命令",
                             }),
-                            ". Bind commands to ",
+                            "，再将命令绑定到",
                             templateHotkeysDesc.createEl("a", {
                                 href: "https://obsidian.md/help/hotkeys",
-                                text: "hotkeys",
+                                text: "快捷键",
                             }),
-                            ' in "Hotkeys" settings.',
+                            "（在“快捷键”设置中配置）。",
                         );
                         return templateHotkeysDesc;
                     })(),
                     items: [
                         {
-                            name: "No template folder set. Please set the template folder location on the previous page.",
+                            name: "尚未设置模板文件夹，请返回上一页设置模板文件夹位置。",
                             searchable: false,
                             visible: () =>
                                 !this.plugin.settings.templates_folder,
@@ -277,17 +277,17 @@ export class TemplaterSettingTab extends PluginSettingTab {
                     ],
                 },
                 {
-                    name: "Automatic jump to cursor",
+                    name: "自动跳转到光标位置",
                     desc: (() => {
                         const autoJumpDesc = createFragment();
                         autoJumpDesc.append(
-                            "Automatically triggers ",
+                            "插入模板后自动触发 ",
                             autoJumpDesc.createEl("code", {
                                 text: "tp.file.cursor",
                             }),
-                            " after inserting a template.",
+                            "。",
                             autoJumpDesc.createEl("br"),
-                            "You can also set a hotkey to manually trigger ",
+                            "你也可以设置快捷键，手动触发 ",
                             autoJumpDesc.createEl("code", {
                                 text: "tp.file.cursor",
                             }),
@@ -298,8 +298,8 @@ export class TemplaterSettingTab extends PluginSettingTab {
                     control: { type: "toggle", key: "auto_jump_to_cursor" },
                 },
                 {
-                    name: "Jump to note content after creating note",
-                    desc: "When creating a new note from a template, skip the rename prompt and immediately move the cursor to the note body.",
+                    name: "创建笔记后跳转到正文",
+                    desc: "从模板创建新笔记时，跳过重命名提示，直接将光标移至笔记正文。",
                     control: {
                         type: "toggle",
                         key: "jump_to_cursor_after_file_name",
@@ -310,19 +310,19 @@ export class TemplaterSettingTab extends PluginSettingTab {
 
         items.push({
             type: "group",
-            heading: "Syntax highlighting",
+            heading: "语法高亮",
             items: [
                 {
-                    name: "Syntax highlighting on desktop",
-                    desc: "Adds syntax highlighting for Templater commands in edit mode.",
+                    name: "桌面端语法高亮",
+                    desc: "在编辑模式中为 Templater 命令启用语法高亮。",
                     control: {
                         type: "toggle",
                         key: "syntax_highlighting",
                     },
                 },
                 {
-                    name: "Syntax highlighting on mobile",
-                    desc: "Adds syntax highlighting for Templater commands in edit mode on mobile. Use with caution: this may break live preview on mobile platforms.",
+                    name: "移动端语法高亮",
+                    desc: "在移动端的编辑模式中为 Templater 命令启用语法高亮。请谨慎使用：此功能可能导致移动端的实时预览异常。",
                     control: {
                         type: "toggle",
                         key: "syntax_highlighting_mobile",
@@ -333,23 +333,23 @@ export class TemplaterSettingTab extends PluginSettingTab {
 
         items.push({
             type: "group",
-            heading: "File creation",
+            heading: "文件创建",
             items: this.fileCreationGroup(localSettings),
         });
 
         items.push({
             type: "group",
-            heading: "Startup templates",
+            heading: "启动模板",
             items: [
                 {
-                    name: "Enable startup templates",
+                    name: "启用启动模板",
                     desc: createFragment((f) => {
                         f.append(
-                            "Enables templates to run automatically when Templater starts.",
+                            "允许模板在 Templater 启动时自动运行。",
                             createEl("br"),
                             createEl("br"),
                             createSpan({
-                                text: "This setting is stored on this device only and must be enabled separately on each device.",
+                                text: "此设置仅保存在当前设备上，需要在每台设备上分别启用。",
                                 cls: "mod-warning",
                             }),
                         );
@@ -361,8 +361,8 @@ export class TemplaterSettingTab extends PluginSettingTab {
                 },
                 {
                     type: "page",
-                    name: "Startup templates",
-                    desc: "Templates that run once when Templater starts. These output nothing and are useful for setting up event hooks.",
+                    name: "启动模板",
+                    desc: "在 Templater 启动时运行一次的模板。这些模板不输出内容，可用于注册事件钩子。",
                     items: [this.startupTemplatesGroup()],
                     visible: () => localSettings.enable_startup_templates,
                 },
@@ -371,13 +371,13 @@ export class TemplaterSettingTab extends PluginSettingTab {
 
         items.push({
             type: "group",
-            heading: "User scripts",
+            heading: "用户脚本",
             items: this.userScriptItems(),
         });
 
         items.push({
             type: "group",
-            heading: "User system commands",
+            heading: "用户系统命令",
             items: this.systemCommandItems(localSettings),
         });
 
@@ -389,63 +389,63 @@ export class TemplaterSettingTab extends PluginSettingTab {
     ): SettingGroupItem<keyof Settings | keyof LocalSettings>[] {
         const triggerDesc = createFragment();
         triggerDesc.append(
-            "Templater will listen for the new file creation event, and, if it matches a rule you've set, replace every command it finds in the new file's content. ",
-            "This makes Templater compatible with other plugins like the Daily note core plugin, Calendar plugin, Review plugin, Note refactor plugin, etc. ",
+            "Templater 会监听新文件的创建事件；当文件符合你设置的规则时，会执行并替换新文件内容中的所有模板命令。",
+            "因此可与日记（Daily notes）核心插件、Calendar、Review、Note refactor 等插件配合使用。",
             createEl("br"),
             createEl("br"),
             createSpan({
-                text: "This setting is stored on this device only and must be enabled separately on each device.",
+                text: "此设置仅保存在当前设备上，需要在每台设备上分别启用。",
                 cls: "mod-warning",
             }),
         );
         const modeDescList = createEl("ul");
         modeDescList.appendChild(
             createEl("li", {
-                text: "None: Do not auto apply templates. Templater will still listen for the new file creation event and replace every command it finds in the new file's content.",
+                text: "无：不自动应用模板，但仍监听新文件的创建事件，执行并替换新文件内容中的所有模板命令。",
             }),
         );
         modeDescList.appendChild(
             createEl("li", {
-                text: "Folder templates: Apply templates based on folder structure.",
+                text: "文件夹模板：根据文件夹结构应用模板。",
             }),
         );
         modeDescList.appendChild(
             createEl("li", {
-                text: "File regex templates: Apply templates based on regex file name patterns.",
+                text: "文件正则模板：根据文件名的正则匹配规则应用模板。",
             }),
         );
         const modeDesc = createFragment();
         modeDesc.append(
-            "Choose the matching mode for triggering templates on file creation.",
+            "选择创建文件时触发模板的匹配方式。",
             modeDesc.createEl("br"),
             modeDescList,
         );
 
         const folderTriggerDesc = createFragment();
         folderTriggerDesc.append(
-            "If there is a match, Templater will apply the corresponding template to the new file.",
+            "匹配成功后，Templater 会将对应模板应用到新文件。",
             folderTriggerDesc.createEl("br"),
-            "The most specific (deepest) matching folder wins, so a rule for a subfolder takes precedence over a rule for its parent.",
+            "优先使用匹配层级最深的文件夹规则，因此子文件夹的规则优先于父文件夹。",
             folderTriggerDesc.createEl("br"),
-            "Add a rule for ",
+            "如需匹配所有文件，可添加规则 ",
             folderTriggerDesc.createEl("code", { text: "/" }),
-            " if you need a catch-all.",
+            "。",
         );
 
         const fileRegexTriggerDesc = createFragment();
         fileRegexTriggerDesc.append(
-            "File regex templates are applied based on the regex file path patterns you define.",
+            "根据你定义的文件路径正则匹配规则应用模板。",
             fileRegexTriggerDesc.createEl("br"),
-            "File regex templates are processed in order, so if a file matches multiple regex templates, only the first match will be applied.",
+            "文件正则模板按顺序匹配；如果文件符合多条规则，只应用第一个匹配的模板。",
             fileRegexTriggerDesc.createEl("br"),
-            "Add a rule for ",
+            "如需匹配所有文件，可添加规则 ",
             fileRegexTriggerDesc.createEl("code", { text: ".*" }),
-            " if you need a catch-all.",
+            "。",
         );
 
         return [
             {
-                name: "Trigger Templater on new file creation",
+                name: "创建新文件时触发 Templater",
                 desc: triggerDesc,
                 control: {
                     type: "toggle",
@@ -454,28 +454,28 @@ export class TemplaterSettingTab extends PluginSettingTab {
             },
             {
                 type: "page",
-                name: "Excluded folders",
-                desc: "New files created in these folders will never trigger Templater.",
+                name: "排除的文件夹",
+                desc: "在这些文件夹中创建新文件时，不会触发 Templater。",
                 items: [this.ignoreFoldersGroup()],
                 visible: () => localSettings.trigger_on_file_creation,
             },
             {
-                name: "Template matching mode",
+                name: "模板匹配方式",
                 desc: modeDesc,
                 control: {
                     type: "dropdown",
                     key: "trigger_on_file_creation_mode",
                     options: {
-                        none: "None",
-                        folder: "Folder templates",
-                        regex: "File regex templates",
+                        none: "无",
+                        folder: "文件夹模板",
+                        regex: "文件正则模板",
                     },
                 },
                 visible: () => localSettings.trigger_on_file_creation,
             },
             {
                 type: "page",
-                name: "Folder templates",
+                name: "文件夹模板",
                 desc: folderTriggerDesc,
                 items: [this.folderTemplatesGroup()],
                 visible: () =>
@@ -485,7 +485,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
             },
             {
                 type: "page",
-                name: "File regex templates",
+                name: "文件正则模板",
                 desc: fileRegexTriggerDesc,
                 items: [this.fileTemplatesGroup()],
                 visible: () =>
@@ -515,7 +515,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
                                     template && i !== excludeIndex,
                         )
                     ) {
-                        return "This template already has a hotkey";
+                        return "此模板已配置快捷键";
                     }
                 },
             ).open();
@@ -524,7 +524,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
         return {
             type: "list",
             addItem: {
-                name: "Add template hotkey",
+                name: "添加模板快捷键",
                 action: () => {
                     openModal(
                         {
@@ -549,7 +549,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
                 this.update();
                 void this.plugin.save_settings();
             },
-            emptyState: "No template hotkeys added.",
+            emptyState: "尚未添加模板快捷键。",
             items: this.plugin.settings.enabled_templates_hotkeys.map(
                 (entry, index) => {
                     const hotkey = resolve_template_hotkey(entry);
@@ -581,7 +581,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
         return {
             type: "list",
             addItem: {
-                name: "Add folder",
+                name: "添加文件夹",
                 action: () => {
                     new IgnoreFolderModal(this.app, (folder) => {
                         this.plugin.settings.ignore_folders_on_creation.push({
@@ -600,7 +600,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
                 this.update();
                 void this.plugin.save_settings();
             },
-            emptyState: "No exclusions added.",
+            emptyState: "尚未添加排除规则。",
             items: this.plugin.settings.ignore_folders_on_creation.map(
                 (entry) => ({
                     name: entry.folder,
@@ -630,7 +630,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
                             (e, i) => e.folder === folder && i !== excludeIndex,
                         )
                     ) {
-                        return "This folder already has a template associated with it";
+                        return "此文件夹已关联模板";
                     }
                 },
             ).open();
@@ -639,7 +639,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
         return {
             type: "list",
             addItem: {
-                name: "Add folder template",
+                name: "添加文件夹模板",
                 action: () => {
                     openModal(
                         { folder: "", template: "" },
@@ -668,7 +668,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
                 this.update();
                 void this.plugin.save_settings();
             },
-            emptyState: "No folder templates added.",
+            emptyState: "尚未添加文件夹模板。",
             items: this.plugin.settings.folder_templates.map(
                 (folder_template, index) => ({
                     name: folder_template.folder,
@@ -713,7 +713,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
         return {
             type: "list",
             addItem: {
-                name: "Add file regex template",
+                name: "添加文件正则模板",
                 action: () => {
                     openModal(
                         { regex: "", template: "" },
@@ -742,7 +742,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
                 this.update();
                 void this.plugin.save_settings();
             },
-            emptyState: "No file regex templates added.",
+            emptyState: "尚未添加文件正则模板。",
             items: this.plugin.settings.file_templates.map(
                 (file_template, index) => ({
                     name: file_template.regex,
@@ -774,7 +774,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
         return {
             type: "list",
             addItem: {
-                name: "Add new startup template",
+                name: "添加启动模板",
                 action: () => {
                     new StartupTemplateModal(
                         this.app,
@@ -794,7 +794,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
                 this.update();
                 void this.plugin.save_settings();
             },
-            emptyState: "No startup templates added.",
+            emptyState: "尚未添加启动模板。",
             items: this.plugin.settings.startup_templates.map((template) => ({
                 name: template,
                 searchable: false,
@@ -805,20 +805,20 @@ export class TemplaterSettingTab extends PluginSettingTab {
     private userScriptItems(): SettingGroupItem<keyof Settings>[] {
         const items: SettingGroupItem<keyof Settings>[] = [];
         items.push({
-            name: "User scripts folder",
+            name: "用户脚本文件夹",
             desc: (() => {
                 const desc = createFragment();
                 desc.append(
-                    "All JavaScript files in this folder will be loaded as CommonJS modules, to import custom user functions.",
+                    "此文件夹中的所有 JavaScript 文件都将作为 CommonJS 模块加载，以导入自定义用户函数。",
                     desc.createEl("br"),
-                    "The folder needs to be accessible from the vault.",
+                    "此文件夹必须位于当前仓库可访问的位置。",
                     desc.createEl("br"),
-                    "Check the ",
+                    "查看",
                     desc.createEl("a", {
                         href: "https://silentvoid13.github.io/Templater/",
-                        text: "documentation",
+                        text: "文档",
                     }),
-                    " for more information.",
+                    "，了解更多信息。",
                 );
                 return desc;
             })(),
@@ -829,24 +829,24 @@ export class TemplaterSettingTab extends PluginSettingTab {
         });
 
         items.push({
-            name: "User script intellisense",
-            desc: "Determine how you'd like to have user script intellisense render. Note values will not render if not in the script.",
+            name: "用户脚本智能提示",
+            desc: "选择用户脚本智能提示的显示内容。脚本中未提供的信息不会显示。",
             control: {
                 type: "dropdown",
                 key: "intellisense_render",
                 options: {
-                    0: "Turn off intellisense",
-                    1: "Render method description, parameters list, and return",
-                    2: "Render method description and parameters list",
-                    3: "Render method description and return",
-                    4: "Render method description",
+                    0: "关闭智能提示",
+                    1: "显示函数说明、参数列表和返回值",
+                    2: "显示函数说明和参数列表",
+                    3: "显示函数说明和返回值",
+                    4: "显示函数说明",
                 },
             },
         });
 
         items.push({
             type: "page",
-            name: "User scripts",
+            name: "用户脚本",
             searchable: false,
             page: () => new UserScriptsPage(this, this.plugin),
         });
@@ -859,25 +859,25 @@ export class TemplaterSettingTab extends PluginSettingTab {
     ): SettingGroupItem<keyof Settings | keyof LocalSettings>[] {
         const shellDesc = createFragment();
         shellDesc.append(
-            "Full path to the shell binary to execute the command with.",
+            "用于执行命令的 Shell 程序的完整路径。",
             shellDesc.createEl("br"),
-            "This setting is optional and will default to the system's default shell if not specified.",
+            "此设置为可选项，留空时使用系统默认 Shell。",
             shellDesc.createEl("br"),
-            "You can use forward slashes (",
+            "在所有平台上都可以使用正斜杠（",
             shellDesc.createEl("code", { text: "/" }),
-            ") as path separators on all platforms if in doubt.",
+            "）作为路径分隔符。",
         );
 
         return [
             {
-                name: "Enable user system command functions",
+                name: "启用用户系统命令函数",
                 desc: createFragment((f) => {
                     f.append(
-                        "Allows you to create user functions linked to system commands.",
+                        "允许创建与系统命令关联的用户函数。",
                         createEl("br"),
                         createEl("br"),
                         createSpan({
-                            text: "This setting is stored on this device only and must be enabled separately on each device.",
+                            text: "此设置仅保存在当前设备上，需要在每台设备上分别启用。",
                             cls: "mod-warning",
                         }),
                     );
@@ -888,14 +888,14 @@ export class TemplaterSettingTab extends PluginSettingTab {
                 },
             },
             {
-                name: "Timeout",
-                desc: "Maximum timeout in seconds for a system command.",
+                name: "超时时间",
+                desc: "系统命令的最长执行时间，单位为秒。",
                 control: {
                     type: "number",
                     key: "command_timeout",
                     validate: (value) => {
                         if (isNaN(value) || value <= 0) {
-                            return "Timeout must be a positive number";
+                            return "超时时间必须为正数";
                         }
                         return undefined;
                     },
@@ -903,7 +903,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
                 visible: () => localSettings.enable_system_commands,
             },
             {
-                name: "Shell binary location",
+                name: "Shell 程序位置",
                 desc: shellDesc,
                 control: {
                     type: "text",
@@ -914,7 +914,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
             },
             {
                 type: "page",
-                name: "User system command functions",
+                name: "用户系统命令函数",
                 items: [this.systemCommandPairsGroup()],
                 visible: () => localSettings.enable_system_commands,
             },
@@ -937,7 +937,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
                             (p, i) => p[0] === name && i !== excludeIndex,
                         )
                     ) {
-                        return "This function name is already in use";
+                        return "此函数名已被使用";
                     }
                     return undefined;
                 },
@@ -947,7 +947,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
         return {
             type: "list",
             addItem: {
-                name: "Add new user function",
+                name: "添加用户函数",
                 action: () => {
                     openModal({ name: "", command: "" }, (name, command) => {
                         this.plugin.settings.templates_pairs.push([
@@ -964,7 +964,7 @@ export class TemplaterSettingTab extends PluginSettingTab {
                 this.update();
                 void this.plugin.save_settings();
             },
-            emptyState: "No user functions added.",
+            emptyState: "尚未添加用户函数。",
             items: this.plugin.settings.templates_pairs.map(
                 (template_pair, index) => ({
                     name: template_pair[0],

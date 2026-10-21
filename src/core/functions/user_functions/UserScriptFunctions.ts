@@ -59,7 +59,7 @@ async function evaluate_user_script(
 
     if (!wrapping_fn) {
         // Thrown bare so the caller can attribute it to the offending file.
-        throw new Error(script_error ?? "Could not evaluate script.");
+        throw new Error(script_error ?? "无法执行脚本。");
     }
     return wrapping_fn;
 }
@@ -78,7 +78,7 @@ export class UserScriptFunctions implements IGenerateObject {
                     this.plugin.app,
                     this.plugin.settings.user_scripts_folder,
                 ),
-            `Couldn't find user script folder "${this.plugin.settings.user_scripts_folder}"`,
+            `找不到用户脚本文件夹“${this.plugin.settings.user_scripts_folder}”`,
         );
         if (!files) {
             return new Map();
@@ -113,7 +113,7 @@ export class UserScriptFunctions implements IGenerateObject {
             wrapping_fn(req, mod, exp);
         } catch (err) {
             throw new TemplaterError(
-                `Failed to load user script at "${file.path}".`,
+                `加载用户脚本“${file.path}”失败。`,
                 err instanceof Error ? err.message : String(err),
             );
         }
@@ -121,7 +121,7 @@ export class UserScriptFunctions implements IGenerateObject {
 
         if (!exported) {
             throw new TemplaterError(
-                `Failed to load user script at "${file.path}". No exports detected.`,
+                `加载用户脚本“${file.path}”失败：未检测到导出内容。`,
             );
         }
 
@@ -137,7 +137,7 @@ export class UserScriptFunctions implements IGenerateObject {
             if (!allValuesAreFunctions) {
                 // ❌ Error: The exported object contains non-function values
                 throw new TemplaterError(
-                    `Exported object in "${file.path}" must contain only functions.`,
+                    `“${file.path}”导出的对象只能包含函数。`,
                 );
             }
 
@@ -147,7 +147,7 @@ export class UserScriptFunctions implements IGenerateObject {
         // ❌ Error: The export is neither a function nor an object of functions
         else {
             throw new TemplaterError(
-                `Invalid export in "${file.path}". Must be a function or object of functions.`,
+                `“${file.path}”的导出内容无效，必须为函数或仅包含函数的对象。`,
             );
         }
     }

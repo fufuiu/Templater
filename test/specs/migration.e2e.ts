@@ -192,14 +192,14 @@ describe("Migration", () => {
             await resetVault("test/vault", {});
             await seedLegacyDataAndMigrate({ trigger_on_file_creation: true });
 
-            await NoticePage.expectMigrationNotice(["'Trigger on file creation'"]);
+            await NoticePage.expectMigrationNotice(["“创建新文件时触发 Templater”"]);
         });
 
         it("shows a notice naming enable_system_commands when it was true", async () => {
             await resetVault("test/vault", {});
             await seedLegacyDataAndMigrate({ enable_system_commands: true });
 
-            await NoticePage.expectMigrationNotice(["'Enable system commands'"]);
+            await NoticePage.expectMigrationNotice(["“启用用户系统命令函数”"]);
         });
 
         it("shows a notice naming enable_startup_templates when startup_templates was non-empty", async () => {
@@ -208,7 +208,7 @@ describe("Migration", () => {
                 startup_templates: ["templates/startup.md"],
             });
 
-            await NoticePage.expectMigrationNotice(["'Enable startup templates'"]);
+            await NoticePage.expectMigrationNotice(["“启用启动模板”"]);
         });
 
         it("lists all affected settings in a single notice", async () => {
@@ -220,9 +220,9 @@ describe("Migration", () => {
             });
 
             await NoticePage.expectMigrationNotice([
-                "'Trigger on file creation'",
-                "'Enable system commands'",
-                "'Enable startup templates'",
+                "“创建新文件时触发 Templater”",
+                "“启用用户系统命令函数”",
+                "“启用启动模板”",
             ]);
         });
 

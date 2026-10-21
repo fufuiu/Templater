@@ -97,7 +97,7 @@ export class UserSystemFunctions implements IGenerateObject {
                             return stdout.trimRight();
                         } catch (error) {
                             throw new TemplaterError(
-                                `Error with User Template ${template}`,
+                                `用户模板 ${template} 执行出错`,
                                 error instanceof Error
                                     ? error.message
                                     : String(error),

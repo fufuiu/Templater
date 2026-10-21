@@ -19,7 +19,7 @@ export class CommandHandler {
     setup(): void {
         this.plugin.addCommand({
             id: "insert-templater",
-            name: "Open insert template modal",
+            name: "打开插入模板窗口",
             icon: "templater-icon",
             callback: () => {
                 this.plugin.fuzzy_suggester.insert_template();
@@ -28,7 +28,7 @@ export class CommandHandler {
 
         this.plugin.addCommand({
             id: "replace-in-file-templater",
-            name: "Replace templates in the active file",
+            name: "执行并替换当前文件中的模板命令",
             icon: "templater-icon",
             callback: async () => {
                 await this.plugin.templater.overwrite_active_file_commands();
@@ -37,7 +37,7 @@ export class CommandHandler {
 
         this.plugin.addCommand({
             id: "jump-to-next-cursor-location",
-            name: "Jump to next cursor location",
+            name: "跳转到下一个光标位置",
             icon: "text-cursor",
             callback: async () => {
                 await this.plugin.editor_handler.jump_to_next_cursor_location();
@@ -46,7 +46,7 @@ export class CommandHandler {
 
         this.plugin.addCommand({
             id: "create-new-note-from-template",
-            name: "Create new note from template",
+            name: "从模板创建新笔记",
             icon: "templater-icon",
             callback: () => {
                 this.plugin.fuzzy_suggester.create_new_note_from_template();
@@ -89,13 +89,13 @@ export class CommandHandler {
         const resolve_template = () =>
             errorWrapperSync(
                 () => resolve_tfile(this.plugin.app, template_path),
-                `Couldn't find the template file associated with this hotkey`,
+                `找不到此快捷键关联的模板文件`,
             );
 
         if (hotkey.insert_enabled) {
             this.plugin.addCommand({
                 id: template_path,
-                name: `Insert ${template_name}`,
+                name: `插入 ${template_name}`,
                 icon: "templater-icon",
                 callback: async () => {
                     const template = resolve_template();
@@ -111,7 +111,7 @@ export class CommandHandler {
         if (hotkey.create_enabled) {
             this.plugin.addCommand({
                 id: `create-${template_path}`,
-                name: `Create ${template_name}`,
+                name: `创建 ${template_name}`,
                 icon: "templater-icon",
                 callback: async () => {
                     const template = resolve_template();
@@ -139,21 +139,21 @@ export class CommandHandler {
     register_cli_handler(): void {
         this.plugin.registerCliHandler(
             "templater:create-from-template",
-            "Create a new note from a Templater template",
+            "从 Templater 模板创建新笔记",
             {
                 template: {
                     value: "<path>",
                     description:
-                        "Template file path (relative to vault root or templates folder)",
+                        "模板文件路径（相对于仓库根目录或模板文件夹）",
                     required: true,
                 },
                 file: {
                     value: "<path>",
-                    description: "Output file path (relative to vault root)",
+                    description: "输出文件路径（相对于仓库根目录）",
                     required: true,
                 },
                 open: {
-                    description: "Open the created file in the UI",
+                    description: "在界面中打开创建的文件",
                     required: false,
                 },
             },
@@ -177,7 +177,7 @@ export class CommandHandler {
                 );
                 return resolve_tfile(this.plugin.app, full_path);
             }
-            throw new Error(`Template "${template}" not found`);
+            throw new Error(`找不到模板“${template}”`);
         }
     }
 
@@ -187,10 +187,10 @@ export class CommandHandler {
         const { template, file, open } = params;
 
         if (!template) {
-            return "Error: template parameter is required";
+            return "Error: 缺少必填参数 template";
         }
         if (!file) {
-            return "Error: file parameter is required";
+            return "Error: 缺少必填参数 file";
         }
 
         try {
@@ -223,7 +223,7 @@ export class CommandHandler {
             if (created_file) {
                 return created_file.path;
             }
-            return "Error: Failed to create note from template";
+            return "Error: 从模板创建笔记失败";
         } catch (error) {
             return `Error: ${error instanceof Error ? error.message : String(error)}`;
         }

@@ -31,7 +31,7 @@ export class InternalModuleDate extends InternalModule {
         ) => {
             if (reference && !moment(reference, reference_format).isValid()) {
                 throw new TemplaterError(
-                    "Invalid reference date format, try specifying one with the argument 'reference_format'"
+                    "参考日期格式无效，请尝试使用 reference_format 参数指定格式"
                 );
             }
             let duration;
@@ -67,7 +67,7 @@ export class InternalModuleDate extends InternalModule {
         ) => {
             if (reference && !moment(reference, reference_format).isValid()) {
                 throw new TemplaterError(
-                    "Invalid reference date format, try specifying one with the argument 'reference_format'"
+                    "参考日期格式无效，请尝试使用 reference_format 参数指定格式"
                 );
             }
             return moment(reference, reference_format)

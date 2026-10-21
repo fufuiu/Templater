@@ -17,14 +17,14 @@ export class StartupTemplateModal extends Modal {
     }
 
     onOpen() {
-        this.setTitle("Add startup template");
+        this.setTitle("添加启动模板");
         const { contentEl } = this;
 
         this.modalEl.addClass("templater-startup-template-modal");
 
         const templateSetting = new Setting(contentEl)
-            .setName("Template")
-            .setDesc("Enter a template path, e.g. meta/templates/daily.md")
+            .setName("模板")
+            .setDesc("输入模板路径，例如 meta/templates/daily.md")
             .addText((cb) => {
                 new FileSuggest(
                     cb.inputEl,
@@ -38,12 +38,12 @@ export class StartupTemplateModal extends Modal {
 
         const buttonContainer = contentEl.createDiv("modal-button-container");
         new ButtonComponent(buttonContainer)
-            .setButtonText("Done")
+            .setButtonText("完成")
             .setCta()
             .onClick(async () => {
                 if (!this.template) {
                     templateSetting.setErrorMessage(
-                        "Template cannot be empty",
+                        "模板不能为空",
                     );
                     return;
                 }
@@ -51,7 +51,7 @@ export class StartupTemplateModal extends Modal {
                 this.close();
             });
         new ButtonComponent(buttonContainer)
-            .setButtonText("Cancel")
+            .setButtonText("取消")
             .onClick(() => this.close());
     }
 
