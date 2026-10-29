@@ -7,8 +7,10 @@ TypeScript 源码和内置函数说明，不引入 i18n 依赖或多语言框架
 ## 当前状态
 
 - 本地维护分支：`zh-cn`，已创建并切换；保留原有 `master` 分支。
-- 官方远程：`origin` → `https://github.com/SilentVoid13/Templater.git`。
-  这是官方仓库，不是用户的 fork；不要向它推送汉化修改。
+- 2026-10-29 已接入公开 Fork：`origin` → `https://github.com/fufuiu/Templater.git`，
+  GitHub 默认分支及本地维护分支均为 `zh-cn`。
+- 官方远程：`upstream` → `https://github.com/SilentVoid13/Templater.git`。
+  从 `upstream` 获取正式发布版本，只向 `origin` 推送汉化修改。
 - 当前插件版本为 `2.26.0`。2026-10-22 已将官方 `2.26.0` 标签（`28c1ff7`）
   合并进 `zh-cn`。该发布相对旧基线 `c51cf11`（2.25.1+12，功能提交已包含
   在旧基线中）只改了 CHANGELOG/manifest/package/versions 版本文件，
@@ -55,9 +57,9 @@ TypeScript 源码和内置函数说明，不引入 i18n 依赖或多语言框架
 1. 查看 `git status --short --branch`、`git branch -avv` 和 `git remote -v`。
    在 `zh-cn` 上维护。首次同步前将当前汉化保存为独立提交；如混有用户
    后续修改，先区分并保留。不要用 `reset --hard` 或整文件覆盖丢弃汉化。
-2. 用户要求更新时，执行 `git fetch origin --tags`。指定版本时使用指定
+2. 用户要求更新时，执行 `git fetch upstream --tags`。指定版本时使用指定
    标签；未指定时优先选择正式发布版本，只有用户需要开发版时才合并
-   `origin/master`。检查实际标签和提交关系，不在本文固定下一版本号。
+   `upstream/master`。检查实际标签和提交关系，不在本文固定下一版本号。
 3. 在 `zh-cn` 上通过 `git merge` 合并选定的官方标签或提交，保留官方历史。
    冲突处以新版功能逻辑为准，逐处保留或重译显示文字；不要统一使用
    `ours` 或 `theirs` 处理全部冲突。
